@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Project_1.LoginPage"
+             NavigationPage.HasNavigationBar="false"
+             Title="Login">         <!--any elements/ attributed prfixed with an x belongs to microsoft 
+                                                                xmlns="http://xamarin.com/schemas/2014/forms" Owned my Xamarin
+                                                                :x used to declare a prefix (this name space is owned by microsoft)-->
+
+    <RelativeLayout>
+        <BoxView Color="Silver" x:Name="Logo"
+            RelativeLayout.WidthConstraint="{ConstraintExpression                  
+            Type=RelativeToParent,
+            Property=Width,
+            Factor=1}"
+                 
+            RelativeLayout.HeightConstraint ="{ConstraintExpression
+            Type=RelativeToParent,
+            Property=Height,
+            Factor=0.15}"/>
+
+        <StackLayout
+            VerticalOptions="Center"
+            Padding="80,0,0,0"
+            
+            RelativeLayout.YConstraint ="{ConstraintExpression
+            Type=RelativeToView,
+            ElementName=Logo,
+            Property=Height,
+            Factor=1,
+            Constant=70}"
+  
+            
+            RelativeLayout.WidthConstraint="{ConstraintExpression                  
+            Type=RelativeToParent,
+            Property=Width,
+            Factor=0.8}"
+            
+            RelativeLayout.HeightConstraint ="{ConstraintExpression
+            Type=RelativeToParent,
+            Property=Height,
+            Factor=0.5}">
+
+            <Entry Keyboard="Email" Placeholder="Email" />
+            <Entry IsPassword="True" Placeholder ="Password"/>
+            
+            <Button Text="Login" Clicked="btnLogin_Clicked"/>
+            <Button Text="Register" Clicked="btnRegister_Clicked"/>
+
+        </StackLayout>
+    </RelativeLayout>
+</ContentPage>
