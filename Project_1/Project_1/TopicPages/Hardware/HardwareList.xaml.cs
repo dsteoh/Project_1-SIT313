@@ -8,32 +8,30 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace Project_1.TopicPages.Programming
+namespace Project_1.TopicPages.Hardware
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class ProgrammingList : ContentPage
+	public partial class HardwareList : ContentPage
 	{
-		public ProgrammingList (Topics Name)
+		public HardwareList (Topics Name)
 		{
-            if(Name == null)
+            if (Name == null)
             {
                 throw new ArgumentNullException();
             }
             BindingContext = Name;
 
-			InitializeComponent ();
+            InitializeComponent ();
 
-            ProgramQList.ItemsSource = new List<ListProperties>
+            HardwareQList.ItemsSource = new List<ListProperties>
             {
-                new ListProperties {Title= "Need help with ASP.NET", Description = "Posted on the 24th"},
-                new ListProperties {Title= "What are objects?", Description = "Posted Today"},
-                new ListProperties {Title= "Where to download Xamarin?", Description = "Posted on the 30th"},
+                new ListProperties {Title= "Best CPU?", Description = "Posted on the 24th"},
+                new ListProperties {Title= "How to overclock?", Description = "Posted Today"},
+                new ListProperties {Title= "New Ryzen", Description = "Posted on the 30th"},
                 new ListProperties {Title= "test", Description = "test"},
                 new ListProperties {Title= "test", Description = "test"}
-
             };
-
-		}
+        }
 
         private void ToolbarItem_Activated(object sender, EventArgs e)
         {

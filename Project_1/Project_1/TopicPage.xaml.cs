@@ -8,6 +8,7 @@ using Project_1.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Project_1.TopicPages.Programming;
+using Project_1.TopicPages.Hardware;
 
 namespace Project_1
 {
@@ -36,12 +37,17 @@ namespace Project_1
                 return;
             }
 
-    
             var TopicName = e.SelectedItem as Topics;
             if (TopicName.Name == "Programming")
             {
                 await Navigation.PushAsync(new ProgrammingList(TopicName));
             }
+
+            if (TopicName.Name == "Hardware")
+            {
+                await Navigation.PushAsync(new HardwareList(TopicName));
+            }
+
             TopicList.SelectedItem = null;
         }
     }

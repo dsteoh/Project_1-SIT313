@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Project_1.Models.ProgrammingList
+namespace Project_1.Models
 {
-    public class ProgrammingListProperties
+    public class ListProperties
     {
         public string Title { get; set; }
         public string Description { get; set; }
