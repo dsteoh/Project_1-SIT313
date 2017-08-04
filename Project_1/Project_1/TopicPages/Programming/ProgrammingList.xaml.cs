@@ -32,12 +32,24 @@ namespace Project_1.TopicPages.Programming
                 new ListProperties {Title= "test", Description = "test"}
 
             };
-
 		}
+
 
         private void ToolbarItem_Activated(object sender, EventArgs e)
         {
             DisplayAlert("Activated", "Toolactivate", "ok");
         }
+
+        async void ProgramQList_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            if(e.SelectedItem == null)
+            {
+                return;
+            }
+
+            await Navigation.PushAsync(new ViewQuestion());
+
+            ProgramQList.SelectedItem = null; 
+        } 
     }
 }

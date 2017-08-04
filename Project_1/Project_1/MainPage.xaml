@@ -8,9 +8,9 @@
     <Grid BackgroundColor="LightCyan"
         RowSpacing="0"
         ColumnSpacing="0">
-        <Button Grid.Row="0" Grid.Column="0" Text="Topics" BackgroundColor="WhiteSmoke" Clicked="Button_Clicked"/>
-        <Button Grid.Row="0" Grid.Column="1" Text="Top Trending" BackgroundColor="WhiteSmoke"/>
-        <Button Grid.Row="1" Grid.Column="0" Text="Profile" BackgroundColor="WhiteSmoke"/>
-        <Button Grid.Row="1" Grid.Column="1" Text="Settings" BackgroundColor="WhiteSmoke"/>
+        <Button Grid.Row="0" Grid.Column="0" Text="Topics" BackgroundColor="WhiteSmoke" Clicked="btnTopic_Clicked"/>
+        <Button Grid.Row="0" Grid.Column="1" Text="Search" BackgroundColor="WhiteSmoke" Clicked="btnSearch_Click"/>
+        <Button Grid.Row="1" Grid.Column="0" Text="Profile" BackgroundColor="WhiteSmoke" Clicked="btnProfile_Click"/>
+        <Button Grid.Row="1" Grid.Column="1" Text="Settings" BackgroundColor="WhiteSmoke" Clicked="btnSettings_Click"/>
     </Grid>
 </ContentPage>

@@ -1,14 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Project_1.TopicPages.Programming.ProgrammingList"
-             Title="{Binding Name}">
-
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Icon="plus.png" Text="New" Activated="ToolbarItem_Activated" Order="Secondary"/>
-    </ContentPage.ToolbarItems>
-    <ListView x:Name="ProgramQList"
-              ItemSelected="ProgramQList_ItemSelected">
+             x:Class="Project_1.ProfilePage">
+    <ListView x:Name="ProfileList">
         <ListView.ItemTemplate>
             <DataTemplate>
                 <TextCell Text="{Binding Title}" Detail="{Binding Description}"/>

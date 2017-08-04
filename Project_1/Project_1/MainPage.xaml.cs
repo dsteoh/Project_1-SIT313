@@ -14,9 +14,24 @@ namespace Project_1
             InitializeComponent();
         }
 
-        async void Button_Clicked(object sender, EventArgs e)
+        async void btnTopic_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new TopicPage());    
+        }
+
+        async void btnSearch_Click(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new SearchPage());
+        }
+
+        async void btnProfile_Click(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new TopicPage());
+        }
+
+        async void btnSettings_Click(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new TopicPage());
         }
     }
 }

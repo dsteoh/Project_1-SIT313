@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Project_1.TopicPages.ViewQuestion">
+
+    <ListView x:Name="ViewQuestionList" HasUnevenRows="True">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <StackLayout Orientation="Horizontal" Padding="7">
+                        <Image Source="{Binding ImageUrl}"/>
+                        <StackLayout HorizontalOptions="StartAndExpand">
+                            <Label Text="{Binding Title}"/>
+                            <Label Text="{Binding ForumQuestion}"/>
+                        </StackLayout>
+                        <Button Text="Reply"/>
+                    </StackLayout>
+                </ViewCell>
+                <!--<ImageCell Text="{Binding Title}" Detail="{Binding ForumQuestion}" ImageSource="{Binding ImageUrl}"/>-->
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+</ContentPage>

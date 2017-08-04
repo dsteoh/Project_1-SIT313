@@ -46,9 +46,16 @@
     </Compile>
     <Compile Include="Models\ListProperties.cs" />
     <Compile Include="Models\Topics.cs" />
+    <Compile Include="Models\Question.cs" />
+    <Compile Include="ProfilePage.xaml.cs">
+      <DependentUpon>ProfilePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Registration.xaml.cs">
       <DependentUpon>Registration.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SearchPage.xaml.cs">
+      <DependentUpon>SearchPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="TopicPage.xaml.cs">
       <DependentUpon>TopicPage.xaml</DependentUpon>
@@ -58,6 +65,9 @@
     </Compile>
     <Compile Include="TopicPages\Programming\ProgrammingList.xaml.cs">
       <DependentUpon>ProgrammingList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewQuestion.xaml.cs">
+      <DependentUpon>ViewQuestion.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -110,6 +120,24 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="TopicPages\Hardware\HardwareList.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ViewQuestion.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ProfilePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SearchPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
