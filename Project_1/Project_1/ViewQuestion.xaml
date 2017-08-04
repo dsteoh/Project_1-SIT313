@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Project_1.TopicPages.ViewQuestion">
 
+    <!--This page contains the template to format questions and replies-->
     <ListView x:Name="ViewQuestionList" HasUnevenRows="True">
         <ListView.ItemTemplate>
             <DataTemplate>

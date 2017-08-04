@@ -4,6 +4,7 @@
              x:Class="Project_1.TopicPages.Hardware.HardwareList"
              Title="{Binding Name}">
 
+    <!--This page contains all the question asked about Hardawre-->
     <ContentPage.ToolbarItems>
         <ToolbarItem Icon="plus.png" Text="New" Activated="ToolbarItem_Activated" Order="Secondary"/>
     </ContentPage.ToolbarItems>

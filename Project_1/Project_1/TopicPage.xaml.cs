@@ -19,6 +19,7 @@ namespace Project_1
 		{
 			InitializeComponent ();
 
+            //This populates the ListView with the Topics available
             TopicList.ItemsSource = new List<Topics>
             {
                 new Topics {Name = "Programming"},
@@ -29,7 +30,8 @@ namespace Project_1
 
             };
 		}
-
+        
+        //This method handles the Items in the ListView when selected
         async void TopicList_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             if(e.SelectedItem == null)
@@ -37,7 +39,10 @@ namespace Project_1
                 return;
             }
 
+            //TopicName stores the selected item
             var TopicName = e.SelectedItem as Topics;
+
+            //if statement to identify which topic the user seelected and bring them to the approiate page
             if (TopicName.Name == "Programming")
             {
                 await Navigation.PushAsync(new ProgrammingList(TopicName));

@@ -23,6 +23,7 @@ namespace Project_1.TopicPages.Programming
 
 			InitializeComponent ();
 
+            //Populates the ListView
             ProgramQList.ItemsSource = new List<ListProperties>
             {
                 new ListProperties {Title= "Need help with ASP.NET", Description = "Posted on the 24th"},
@@ -34,7 +35,7 @@ namespace Project_1.TopicPages.Programming
             };
 		}
 
-
+        //Button (To add a new forum thread
         private void ToolbarItem_Activated(object sender, EventArgs e)
         {
             DisplayAlert("Activated", "Toolactivate", "ok");
@@ -47,6 +48,7 @@ namespace Project_1.TopicPages.Programming
                 return;
             }
 
+            //Deselect listview item after being selected
             await Navigation.PushAsync(new ViewQuestion());
 
             ProgramQList.SelectedItem = null; 

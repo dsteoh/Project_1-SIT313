@@ -23,6 +23,7 @@ namespace Project_1.TopicPages.Hardware
 
             InitializeComponent ();
 
+            //Populate the ListView HardwareQlist. It uses the object ListProperties
             HardwareQList.ItemsSource = new List<ListProperties>
             {
                 new ListProperties {Title= "Best CPU?", Description = "Posted on the 24th"},
@@ -32,7 +33,7 @@ namespace Project_1.TopicPages.Hardware
                 new ListProperties {Title= "test", Description = "test"}
             };
         }
-
+        //A button to add to the forum.
         private void ToolbarItem_Activated(object sender, EventArgs e)
         {
             DisplayAlert("Activated", "Toolactivate", "ok");

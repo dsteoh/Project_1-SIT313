@@ -16,7 +16,7 @@ namespace Project_1
         {
             InitializeComponent();
         }
-
+        //Navigation button
         async void btnRegister_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushModalAsync(new MainPage());

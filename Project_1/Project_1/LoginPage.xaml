@@ -7,8 +7,9 @@
                                                                 xmlns="http://xamarin.com/schemas/2014/forms" Owned my Xamarin
                                                                 :x used to declare a prefix (this name space is owned by microsoft)-->
 
-    <RelativeLayout>
-        <BoxView Color="Silver" x:Name="Logo"
+    <RelativeLayout> <!-- Relativ Layout allows to scale properly and have proper spacing between different elements 
+        Using multiple properties to construct a banner / logo space. This space represents where our logo will be-->
+        <BoxView Color="Silver" x:Name="Logo" 
             RelativeLayout.WidthConstraint="{ConstraintExpression                  
             Type=RelativeToParent,
             Property=Width,
@@ -19,6 +20,7 @@
             Property=Height,
             Factor=0.15}"/>
 
+        <!--Since our stacklayout is nested inside the relative layout we can apply the properties of relative layout inside of stacklayout-->
         <StackLayout
             VerticalOptions="Center"
             Padding="80,0,0,0"

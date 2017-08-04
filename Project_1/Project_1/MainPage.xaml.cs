@@ -14,6 +14,7 @@ namespace Project_1
             InitializeComponent();
         }
 
+        //Navigation buttons
         async void btnTopic_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new TopicPage());    

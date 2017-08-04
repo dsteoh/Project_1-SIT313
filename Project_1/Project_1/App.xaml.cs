@@ -13,6 +13,7 @@ namespace Project_1
         {
             InitializeComponent();
 
+            //To use navigation pages we have to wrap our page inside a NavigationPage wrapper
             MainPage = new NavigationPage(new LoginPage());
             
         }

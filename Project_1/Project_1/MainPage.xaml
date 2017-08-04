@@ -5,6 +5,7 @@
              x:Class="Project_1.MainPage"
              Padding="0,0,0,0"
              Title="Forum">
+    <!--This will be our main page. This page have the main functionality of this application listed in a grid view-->
     <Grid BackgroundColor="LightCyan"
         RowSpacing="0"
         ColumnSpacing="0">

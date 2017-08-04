@@ -5,6 +5,7 @@
              Title="Registration">
 
     <RelativeLayout>
+        <!--A simple registration page layout-->
         <StackLayout
             VerticalOptions="Center"
             Padding="80,0,0,0"
