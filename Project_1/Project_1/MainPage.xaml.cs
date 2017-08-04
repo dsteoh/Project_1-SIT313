@@ -26,12 +26,12 @@ namespace Project_1
 
         async void btnProfile_Click(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new TopicPage());
+            await Navigation.PushAsync(new ProfilePage());
         }
 
         async void btnSettings_Click(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new TopicPage());
+            await Navigation.PushAsync(new SettingsPage());
         }
     }
 }

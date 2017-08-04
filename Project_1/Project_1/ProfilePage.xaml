@@ -2,11 +2,73 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Project_1.ProfilePage">
-    <ListView x:Name="ProfileList">
-        <ListView.ItemTemplate>
-            <DataTemplate>
-                <TextCell Text="{Binding Title}" Detail="{Binding Description}"/>
-            </DataTemplate>
-        </ListView.ItemTemplate>
-    </ListView>
+    <RelativeLayout>
+        <BoxView Color="Aqua" x:Name="Banner"
+            RelativeLayout.WidthConstraint="{ConstraintExpression
+            Type=RelativeToParent,
+            Property=Width,
+            Factor=1}"
+                 
+            RelativeLayout.HeightConstraint="{ConstraintExpression
+            Type=RelativeToParent,
+            Property=Height,
+            Factor=0.25}"/>
+
+        <BoxView Color="Silver" 
+            RelativeLayout.YConstraint="{ConstraintExpression
+            Type=RelativeToView,
+            ElementName=Banner,
+            Property=Height,
+            Factor=1,
+            Constant=-35}"
+                 
+            RelativeLayout.XConstraint="{ConstraintExpression
+            Type=RelativeToView,
+            ElementName=Banner,
+            Property=Width,
+            Factor=1,
+            Constant=-256}" 
+                 
+            RelativeLayout.WidthConstraint="{ConstraintExpression
+            Type=RelativeToView,
+            ElementName=Banner,
+            Property=Width,
+            Factor=0.19}"
+                 
+            RelativeLayout.HeightConstraint="{ConstraintExpression
+            Type=RelativeToView,
+            ElementName=Banner,
+            Property=Height,
+            Factor=0.49}"/>
+
+
+        <StackLayout
+            VerticalOptions="Center"
+            Padding="80,0,0,0"
+            
+            RelativeLayout.YConstraint ="{ConstraintExpression
+            Type=RelativeToView,
+            ElementName=Banner,
+            Property=Height,
+            Factor=1,
+            Constant=70}"
+  
+            
+            RelativeLayout.WidthConstraint="{ConstraintExpression                  
+            Type=RelativeToParent,
+            Property=Width,
+            Factor=0.8}"
+            
+            RelativeLayout.HeightConstraint ="{ConstraintExpression
+            Type=RelativeToParent,
+            Property=Height,
+            Factor=0.5}">
+
+            <Label Text="Username: dsteoh"/>
+            <Entry Placeholder="New Username" />
+
+            <Button Text="Save" />
+
+        </StackLayout>
+    </RelativeLayout>
 </ContentPage>
