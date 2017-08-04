@@ -36,7 +36,7 @@ namespace Project_1.TopicPages.Hardware
         //A button to add to the forum.
         private void ToolbarItem_Activated(object sender, EventArgs e)
         {
-            DisplayAlert("Activated", "Toolactivate", "ok");
+            DisplayAlert("Add Option", "Add A new Thread", "ok");
         }
     }
 }

@@ -38,7 +38,7 @@ namespace Project_1.TopicPages.Programming
         //Button (To add a new forum thread
         private void ToolbarItem_Activated(object sender, EventArgs e)
         {
-            DisplayAlert("Activated", "Toolactivate", "ok");
+            DisplayAlert("Add Option", "Add A new Thread", "ok");
         }
 
         async void ProgramQList_ItemSelected(object sender, SelectedItemChangedEventArgs e)
