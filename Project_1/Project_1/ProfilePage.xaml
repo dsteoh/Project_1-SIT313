@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Project_1.ProfilePage">
+             x:Class="Project_1.ProfilePage"
+             Title="Profile">
     <!-- Our aim here is to create a banner and a profile picture holder to represent where the items are going to go these will be replaced by actual picture in project 2-->
     <RelativeLayout> 
         <BoxView Color="Aqua" x:Name="Banner"

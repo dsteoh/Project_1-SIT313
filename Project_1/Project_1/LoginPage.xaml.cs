@@ -26,7 +26,7 @@ namespace Project_1
 
         async void btnLogin_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new MainPage());
+            await Navigation.PushModalAsync(new MainPage());
         }
 
         async void btnRegister_Clicked(object sender, EventArgs e)

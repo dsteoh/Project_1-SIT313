@@ -1,17 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Project_1"
              x:Class="Project_1.MainPage"
              Padding="0,0,0,0"
-             Title="Forum">
+             Title="Forum"
+             BackgroundColor="#313f4f">
     <!--This will be our main page. This page have the main functionality of this application listed in a grid view-->
-    <Grid BackgroundColor="LightCyan"
-        RowSpacing="0"
-        ColumnSpacing="0">
-        <Button Grid.Row="0" Grid.Column="0" Text="Topics" BackgroundColor="WhiteSmoke" Clicked="btnTopic_Clicked"/>
-        <Button Grid.Row="0" Grid.Column="1" Text="Search" BackgroundColor="WhiteSmoke" Clicked="btnSearch_Click"/>
-        <Button Grid.Row="1" Grid.Column="0" Text="Profile" BackgroundColor="WhiteSmoke" Clicked="btnProfile_Click"/>
-        <Button Grid.Row="1" Grid.Column="1" Text="Settings" BackgroundColor="WhiteSmoke" Clicked="btnSettings_Click"/>
-    </Grid>
-</ContentPage>
+   
+</TabbedPage>

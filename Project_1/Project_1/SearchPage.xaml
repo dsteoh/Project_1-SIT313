@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Project_1.SearchPage">
+             x:Class="Project_1.SearchPage"
+             Title="Search">
     <!--This page will be used to search all the questions in the forum in Project 2 we will implement a ListView containing all the questions. To do this
         we will first join all the list together into a single list. This will allow the user to search for any forum questions in any category-->
     <StackLayout>

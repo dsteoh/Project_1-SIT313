@@ -20,7 +20,7 @@ namespace Project_1
         //Navigation button
         async void Button_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new LoginPage());
+            await Navigation.PushModalAsync(new LoginPage());
         }
 
         

@@ -24,7 +24,11 @@
                 Spacing="10">
                     <Entry x:Name="email" Keyboard="Email" Placeholder="Email" />
                     <Entry x:Name="password" IsPassword="True" Placeholder ="Password"/>
-                    <Switch IsToggled="False" Toggled="Switch_Toggled"/>
+                    <StackLayout
+                        Orientation="Horizontal">
+                        <Label Text="Remember Me"/>
+                        <Switch IsToggled="False" Toggled="Switch_Toggled"/>
+                    </StackLayout>
                     <Button Text="Login" Clicked="btnLogin_Clicked"/>
                     <Button Text="Register" Clicked="btnRegister_Clicked"/>
                 </StackLayout>
