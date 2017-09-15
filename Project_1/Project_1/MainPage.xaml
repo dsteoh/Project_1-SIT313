@@ -6,6 +6,13 @@
              Padding="0,0,0,0"
              Title="Forum"
              BackgroundColor="#313f4f">
-    <!--This will be our main page. This page have the main functionality of this application listed in a grid view-->
-   
+<!--This will be our main page. This page have the main functionality of this application listed in a grid view-->
+    <NavigationPage>
+        <x:Arguments>
+            <local:TopicPage/>
+        </x:Arguments>
+    </NavigationPage>
+        <local:SearchPage/>
+        <local:ProfilePage/>
+        <local:SettingsPage/>
 </TabbedPage>
