@@ -12,6 +12,7 @@ namespace Project_1
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Registration : ContentPage
     {
+        
         public Registration()
         {
             InitializeComponent();
@@ -20,6 +21,7 @@ namespace Project_1
         async void btnRegister_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushModalAsync(new MainPage());
+
         }
     }
 }

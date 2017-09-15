@@ -3,52 +3,33 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Project_1.LoginPage"
              NavigationPage.HasNavigationBar="false"
-             Title="Login">         <!--any elements/ attributed prfixed with an x belongs to microsoft 
+             Title="Login"
+             BackgroundColor="#313f4f">         <!--any elements/ attributed prfixed with an x belongs to microsoft 
                                                                 xmlns="http://xamarin.com/schemas/2014/forms" Owned my Xamarin
                                                                 :x used to declare a prefix (this name space is owned by microsoft)-->
-
-    <RelativeLayout> <!-- Relativ Layout allows to scale properly and have proper spacing between different elements 
-        Using multiple properties to construct a banner / logo space. This space represents where our logo will be-->
-        <BoxView Color="Silver" x:Name="Logo" 
-            RelativeLayout.WidthConstraint="{ConstraintExpression                  
-            Type=RelativeToParent,
-            Property=Width,
-            Factor=1}"
-                 
-            RelativeLayout.HeightConstraint ="{ConstraintExpression
-            Type=RelativeToParent,
-            Property=Height,
-            Factor=0.15}"/>
-
-        <!--Since our stacklayout is nested inside the relative layout we can apply the properties of relative layout inside of stacklayout-->
+    <ScrollView>
         <StackLayout
-            VerticalOptions="Center"
-            Padding="80,0,0,0"
-            
-            RelativeLayout.YConstraint ="{ConstraintExpression
-            Type=RelativeToView,
-            ElementName=Logo,
-            Property=Height,
-            Factor=1,
-            Constant=70}"
-  
-            
-            RelativeLayout.WidthConstraint="{ConstraintExpression                  
-            Type=RelativeToParent,
-            Property=Width,
-            Factor=0.8}"
-            
-            RelativeLayout.HeightConstraint ="{ConstraintExpression
-            Type=RelativeToParent,
-            Property=Height,
-            Factor=0.5}">
-
-            <Entry Keyboard="Email" Placeholder="Email" />
-            <Entry IsPassword="True" Placeholder ="Password"/>
-            
-            <Button Text="Login" Clicked="btnLogin_Clicked"/>
-            <Button Text="Register" Clicked="btnRegister_Clicked"/>
-
+        Orientation="Vertical"
+        Padding="20"
+        Spacing="30">
+            <Image
+                HorizontalOptions="Center"
+                WidthRequest="300"
+                HeightRequest="300"
+                Source="https://ui-router.github.io/images/logos/react.png"/>
+            <Frame
+            BackgroundColor="#3f5266">
+                <StackLayout
+                Orientation="Vertical"
+                Spacing="10">
+                    <Entry x:Name="email" Keyboard="Email" Placeholder="Email" />
+                    <Entry x:Name="password" IsPassword="True" Placeholder ="Password"/>
+                    <Switch IsToggled="False" Toggled="Switch_Toggled"/>
+                    <Button Text="Login" Clicked="btnLogin_Clicked"/>
+                    <Button Text="Register" Clicked="btnRegister_Clicked"/>
+                </StackLayout>
+            </Frame>
         </StackLayout>
-    </RelativeLayout>
+    </ScrollView>
+    
 </ContentPage>

@@ -16,7 +16,12 @@ namespace Project_1
         public LoginPage()
         {
             InitializeComponent();
+            
+            if(Application.Current.Properties.ContainsKey("Email"))
+                email.Text = Application.Current.Properties["Email"].ToString();
 
+            if (Application.Current.Properties.ContainsKey("Password"))
+                password.Text = Application.Current.Properties["Password"].ToString();
         }
 
         async void btnLogin_Clicked(object sender, EventArgs e)
@@ -28,5 +33,13 @@ namespace Project_1
         {
             await Navigation.PushAsync(new Registration());
         }
+
+        private void Switch_Toggled(object sender, ToggledEventArgs e)
+        {
+            Application.Current.Properties["Email"] = email.Text;
+            Application.Current.Properties["Password"] = password.Text;
+
+            // Application.Current.SavePropertiesAsync(); <--- stores data as in real time good for email typing etc
+        }  
     }
 }
