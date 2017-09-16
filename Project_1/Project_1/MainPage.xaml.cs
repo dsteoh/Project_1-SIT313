@@ -11,6 +11,7 @@ namespace Project_1
     {
         public MainPage()
         {
+
             InitializeComponent();
         }
     }

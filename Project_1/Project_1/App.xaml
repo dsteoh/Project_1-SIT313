@@ -2,9 +2,17 @@
 <Application xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Project_1.App">
-	<Application.Resources>
+    <Application.Resources>
+        <!-- Application resource dictionary -->
+        <ResourceDictionary>
+            <Style x:Key="EntryColor" TargetType="Entry">
+                <Setter Property="TextColor" Value="White"/>
+            </Style>
 
-		<!-- Application resource dictionary -->
-
+            <Style TargetType="NavigationPage">
+                <Setter Property="BarBackgroundColor" Value="#2f3030"/>
+                <Setter Property="BarTextColor" Value="White"/>
+            </Style>
+        </ResourceDictionary>
 	</Application.Resources>
 </Application>

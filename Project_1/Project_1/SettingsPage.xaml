@@ -1,9 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Project_1.SettingsPage"
-             Title="Settings">
-
-    <!--The settings page will contain the application settings. For now we only have a logout button. In Project 2 will be add more functionality-->
-    <Button Text="Logout" Clicked="Button_Clicked"/>
-</ContentPage>

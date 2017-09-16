@@ -70,7 +70,6 @@
             <Entry Placeholder="New Username" />
 
             <Button Text="Save" />
-
         </StackLayout>
     </RelativeLayout>
 </ContentPage>

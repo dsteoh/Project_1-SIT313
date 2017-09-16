@@ -3,16 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Project_1"
              x:Class="Project_1.MainPage"
-             Padding="0,0,0,0"
-             Title="Forum"
-             BackgroundColor="#313f4f">
+             BackgroundColor="#2f3030">
 <!--This will be our main page. This page have the main functionality of this application listed in a grid view-->
-    <NavigationPage>
+    <NavigationPage Title="Topic">
         <x:Arguments>
             <local:TopicPage/>
         </x:Arguments>
     </NavigationPage>
         <local:SearchPage/>
         <local:ProfilePage/>
-        <local:SettingsPage/>
 </TabbedPage>

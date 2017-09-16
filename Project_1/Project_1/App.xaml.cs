@@ -20,7 +20,7 @@ namespace Project_1
 
         protected override void OnStart()
         {
-            // Handle when your app starts
+
         }
 
         protected override void OnSleep()

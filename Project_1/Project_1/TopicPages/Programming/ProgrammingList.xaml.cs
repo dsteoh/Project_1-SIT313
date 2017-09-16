@@ -15,6 +15,7 @@ namespace Project_1.TopicPages.Programming
 	{
 		public ProgrammingList (Topics Name)
 		{
+            
             if(Name == null)
             {
                 throw new ArgumentNullException();
@@ -52,6 +53,8 @@ namespace Project_1.TopicPages.Programming
             await Navigation.PushAsync(new ViewQuestion());
 
             ProgramQList.SelectedItem = null; 
-        } 
+        }
+
+
     }
 }
