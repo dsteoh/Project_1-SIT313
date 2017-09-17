@@ -2,32 +2,28 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Project_1.Registration"
-             Title="Registration">
-
-    <RelativeLayout>
-        <!--A simple registration page layout-->
+             Title="Registration"
+             BackgroundColor="#2f3030">
+    <ScrollView>
         <StackLayout
-            VerticalOptions="Center"
-            Padding="80,0,0,0"
-            
-            RelativeLayout.WidthConstraint ="{ConstraintExpression
-            Type=RelativeToParent,
-            Property=Width,
-            Factor=0.8
-            }"
-        
-            RelativeLayout.HeightConstraint="{ConstraintExpression
-            Type=RelativeToParent,
-            Property=Height,
-            Factor=0.5
-            }">
-
-            <Entry Keyboard="Default" Placeholder="Username"/>
-            <Entry Keyboard="Email" Placeholder="Email"/>
-            <Entry IsPassword="True" Placeholder="Password"/>
-
-            <Button Text="Register" Clicked="btnRegister_Clicked"/>
+        Orientation="Vertical"
+        Padding="20"
+        Spacing="30">
+            <Image
+                HorizontalOptions="Center"
+                WidthRequest="300"
+                HeightRequest="300"
+                Source="https://ui-router.github.io/images/logos/react.png"/>
+            <Frame
+            BackgroundColor="#4b4c4c">
+                <StackLayout
+                Orientation="Vertical"
+                Spacing="10">
+                    <Entry x:Name="email" Keyboard="Email" Placeholder="Email" Style="{StaticResource EntryColor}"/>
+                    <Entry x:Name="password" IsPassword="True" Placeholder ="Password" Style="{StaticResource EntryColor}"/>
+                    <Button Text="Register" Clicked="btnRegister_Clicked"/>
+                </StackLayout>
+            </Frame>
         </StackLayout>
-    </RelativeLayout>
-    
+    </ScrollView>
 </ContentPage>
