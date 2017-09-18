@@ -13,93 +13,82 @@ namespace Project_1.Models
 {
     class RegisterJson
     {
-        //private static string url = "";
+        /* GetResponseAsync() Method can't be used as it does not support Windows phone 8 
+         * Since we are don't have support for Windows Phone 8 the method should be availble but future investigation into the WebReponse Class showed that the method was missing for some reason.
+         * 
+         * Steps Taken to tried re-enabling
+         * Manual import of System.Net.Http (Still didn't work)
+         * 
+         * Found another way to handle HttpRequest by using HttpClient() method found in the HttpClient class
+         * Tutorial can be found here 
+         * https://blog.jayway.com/2012/03/13/httpclient-makes-get-and-post-very-simple/
+         * 
+         * 
+         *   
+         *
+         *   
+         * 
+        public async void Save(Question name, Question password)
+        {
+            try
+            {
+                Debug.WriteLine("Test User.save");
 
-        //public static User CreateUserFromJson(string json)
-        //{
-        //    User user = JsonConvert.DeserializeObject<User>(json);
-        //    return user;
-        //}
+                string actualUrl = url + "&action=save&objectid=" + name + ".user" + "&data=" + password;
+
+                Uri uri = new Uri(actualUrl);
+
+                Debug.WriteLine(uri);
+
+                HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(uri);
+                request.ContentType = "application/json";
+                request.Method = "GET";
+
+                using (WebResponse response = await request.GetResponseAsync())
+                {
+                    using (Stream stream = response.GetResponseStream())
+                    {
+                        StreamReader objStream = new StreamReader(stream);
+                        string sLine = "";
+
+                        while (sLine != null)
+                        {
+                            sLine = objStream.ReadLine();
+                            if (sLine != null)
+                            {
+                                Debug.WriteLine(sLine);
+                            }
+                        }
+                    }
+
+                }
+            }
+            catch
+            {
+
+            }
+        }
+        */
+
+        private static string url = "http://introtoapps.com/datastore.php?appid=213107696";
 
 
-        //public async void Save(Question name, Question password)
-        //{
-        //    try
-        //    {
-        //        Debug.WriteLine("Test User.save");
+        //string actualUrl = url + "&action=load&objectid=" + this.username + ".user";
+        //string saveUser = url + "&action=save&objectid=" + name + ".user" + "&data=" + password;
 
-        //        string actualUrl = url + "&action=save&objectid=" + name + ".user" + "&data=" + password;
+        public async void Save(string uri)
+        {
+            var httpClient = new HttpClient();
+            var response = await httpClient.GetAsync(uri);
 
-        //        Uri uri = new Uri(actualUrl);
+            //will throw an exception if not successful
+            response.EnsureSuccessStatusCode();
 
-        //        Debug.WriteLine(uri);
+            string content = await response.Content.ReadAsStringAsync();
+        }
 
-        //        HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(uri);
-        //        request.ContentType = "application/json";
-        //        request.Method = "GET";
+        
 
-        //        using (WebResponse response = await request.GetResponseAsync())
-        //        {
-        //            using (Stream stream = response.GetResponseStream())
-        //            {
-        //                StreamReader objStream = new StreamReader(stream);
-        //                string sLine = "";
-
-        //                while (sLine != null)
-        //                {
-        //                    sLine = objStream.ReadLine();
-        //                    if (sLine != null)
-        //                    {
-        //                        Debug.WriteLine(sLine);
-        //                    }
-        //                }
-        //            }
-
-        //        }
-        //    }
-        //    catch
-        //    {
-
-        //    }
-        //}
-
-        //public async Task<bool> Load()
-        //{
-        //    try
-        //    {
-        //        string actualUrl = url + "&action=load&objectid=" + this.username + ".user";
-
-        //        Uri uri = new Uri(actualUrl);
-        //        Debug.WriteLine(uri);
-
-        //        HttpWebRequest request = (HttpWebRequest)WebRequest.Create(uri);
-
-        //        request.Method = "GET";
-
-        //        using (WebResponse response = await request.GetResponseAsync())
-        //        {
-        //            using (Stream stream = response.GetResponseStream())
-        //            {
-        //                StreamReader objStream = new StreamReader(stream);
-        //                string sLine = "";
-
-        //                while (sLine != null)
-        //                {
-        //                    sLine = objStream.ReadLine();
-        //                    if (sLine != null)
-        //                    {
-        //                        this.password = sLine;
-        //                    }
-        //                }
-        //            }
-        //        }
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        Debug.WriteLine(e);
-        //        return false;
-        //    }
-        //    return true;
-        //}
+     
     }
 }

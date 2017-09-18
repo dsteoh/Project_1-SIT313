@@ -25,35 +25,26 @@ namespace Project_1
             InitializeComponent();
         }
 
-        public async void Save(string uri)
-        {
-            var httpClient = new HttpClient();
-            var response = await httpClient.GetAsync(uri);
-
-            //will throw an exception if not successful
-            response.EnsureSuccessStatusCode();
-
-            string content = await response.Content.ReadAsStringAsync();
-        }
-
-
-
         //Navigation button
         async void btnRegister_Clicked(object sender, EventArgs e)
         {
+            string newEmail = email.ToString();
+            string newPassword = WebUtility.UrlEncode(password.ToString());
 
-            User testuser = User.CreateUserFromJson("{\"Username\":\"Dsteoh\", \"Password\":\"Test12345\"}");
-            //await DisplayAlert("Alert", "Username" + testuser.Username + ", Password: " + testuser.Password, "OK");
+            
+            User testuser = User.CreateUserFromJson("{\"Username\":\"testNewUser1\", \"Password\": \"" + newPassword + "\"}");
+            //await DisplayAlert("Alert", "Username" + testuser.Username + ", Password: " + testuser.Password, "OK");      
+            //await DisplayAlert("Alert", "Json Serialised" + testuser.ToJsonString(), "OK");
 
             //saving
-            string actualUrl = url + "&action=save&objectid=" + testuser.Username + ".user" + "&data=" + testuser.Password;
-            Uri uri = new Uri(actualUrl);
+            string actualUrl = url + "&action=save&objectid=" + testuser.Username + ".user" + "&data=" + newPassword;
 
             Debug.WriteLine("Running Save()");
+        
+            RegisterJson userjson = new RegisterJson();
+            userjson.Save(actualUrl);
 
-            Save(actualUrl);
-
-            await DisplayAlert("Alert", "Json Serialised" + testuser.ToJsonString(), "OK");
+            await DisplayAlert("Alert", "User Registered" + testuser.ToJsonString(), "OK");
 
         }
     }
