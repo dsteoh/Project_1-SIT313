@@ -6,6 +6,13 @@ namespace Project_1.Models
     {
         private string _username;
         private string _password;
+        private string _email;
+
+        public string Username
+        {
+            get { return _username; }
+            set { _username = value; }
+        }
 
         public string Password
         {
@@ -13,10 +20,10 @@ namespace Project_1.Models
             set { _password = value; }
         }
 
-        public string Username
+        public string Email
         {
-            get { return _username; }
-            set { _username = value; }
+            get { return _email; }
+            set { _email = value; }
         }
 
         public User()

@@ -17,6 +17,7 @@ namespace Project_1
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Registration : ContentPage
     {
+        //Server URL that we are going to store our JSON data to
         private static string url = "http://introtoapps.com/datastore.php?appid=213107696";
 
 
@@ -28,26 +29,38 @@ namespace Project_1
         //Navigation button
         async void btnRegister_Clicked(object sender, EventArgs e)
         {
-            string newUsername = username.ToString();
-            string passwordTest = password.ToString();
-            string newPassword = WebUtility.UrlEncode(password.ToString());
+            //Initialising........Storing text/data from the Entry fields
+            string newEmail = email.Text;
+            string newUser = username.Text;
 
-            Debug.WriteLine(newPassword);
+            /*Password usually contain special characters.
+             * WebUtility.UrlEncode encodes the string with speical characters into Url format
+             * This allows the JSON API to read and not interfear with HTTP API commands (eg "=", " ", "&")
+            */
+            string newPassword = WebUtility.UrlEncode(password.Text);
 
-            User testuser = User.CreateUserFromJson("{\"Username\":\"testNewUser1\", \"Password\":\""+newPassword+"\"}");
-            //await DisplayAlert("Alert", "Username" + testuser.Username + ", Password: " + testuser.Password, "OK");      
-            //await DisplayAlert("Alert", "Json Serialised" + testuser.ToJsonString(), "OK");
-            Debug.WriteLine(testuser.Password);
+            //Creates a new user object and uses the data from the user and creates a JSON formatted data structure
+            User NewUser = User.CreateUserFromJson("{\"Username\":\""+ newUser + "\", \"Email\":\"" + newEmail + "\", \"Password\":\"" + newPassword + "\"}");
 
-            //saving
-            string actualUrl = url + "&action=save&objectid=" + testuser.Username + ".user" + "&data=" + testuser.Password;
+            /* Tjis string "actualUrl" Attaches the API commands that we need to talk to the server with our JSON file
+             * objectid identifies which JSON object are we targeting 
+             * .user is the prefix we use to identify our users
+             * data= is the JSON data we are about to send to the server
+             * 
+             * We wrap our data in [] to create an array
+            */
+            string actualUrl = url + "&action=append&objectid=" + NewUser.Username + ".user" + "&data=[" + NewUser.ToJsonString() + "]";
 
-            Debug.WriteLine("Running Save()");
+            Uri uri = new Uri(actualUrl);
         
+            /* RegisterJson object contains the method Save() which contacts the server
+             * And passes our JSON data to the server
+             */
             RegisterJson userjson = new RegisterJson();
-            userjson.Save(actualUrl);
+            userjson.Save(uri);
 
-            await DisplayAlert("Alert", "User Registered" + testuser.ToJsonString(), "OK");
+            //Registration finished pop up
+            await DisplayAlert("Alert", "User Registered" + actualUrl, "OK");
 
         }
     }

@@ -1,4 +1,5 @@
-﻿using System.Net.Http;
+﻿using System;
+using System.Net.Http;
 
 namespace Project_1.Models
 {
@@ -64,7 +65,7 @@ namespace Project_1.Models
         //string actualUrl = url + "&action=load&objectid=" + this.username + ".user";
         //string saveUser = url + "&action=save&objectid=" + name + ".user" + "&data=" + password;
 
-        public async void Save(string uri)
+        public async void Save(Uri uri)
         {
             var httpClient = new HttpClient();
             var response = await httpClient.GetAsync(uri);

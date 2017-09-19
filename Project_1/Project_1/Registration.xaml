@@ -4,7 +4,7 @@
              x:Class="Project_1.Registration"
              Title="Registration"
              BackgroundColor="#2f3030"
-             xmlns:behaviors ="clr-namespace:Project_1.Models;">
+             xmlns:behaviors ="clr-namespace:Project_1.Models">
     <ScrollView>
         <StackLayout
         Orientation="Vertical"
@@ -20,15 +20,14 @@
                 <StackLayout
                 Orientation="Vertical"
                 Spacing="10">
-                    <Entry x:Name="username" Placeholder="Username" Style="{StaticResource EntryColor}">
+                    <Entry x:Name="username" Placeholder="Username" Style="{StaticResource EntryColor}"/>
+                    <Entry x:Name="email" Placeholder="Email" Style="{StaticResource EntryColor}">
                         <Entry.Behaviors>
                             <behaviors:EmailValidatorBehavior/>
                         </Entry.Behaviors>
                     </Entry>
-                    
-                    <Entry x:Name="password" IsPassword="True" Placeholder ="Password" Style="{StaticResource EntryColor}"/>
-
-                    <Button x:Name="btnSubmit" Text="Register" Clicked="btnRegister_Clicked"/>
+                    <Entry x:Name="password" Placeholder ="Password" Style="{StaticResource EntryColor}"/>
+                    <Button Text="Register" Clicked="btnRegister_Clicked"/>
                 </StackLayout>
             </Frame>
         </StackLayout>
