@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Net.Http;
+using System.Threading.Tasks;
+using Newtonsoft.Json;
+using System.Diagnostics;
 
 namespace Project_1.Models
 {
@@ -62,22 +65,40 @@ namespace Project_1.Models
         }
         */
 
-        //string actualUrl = url + "&action=load&objectid=" + this.username + ".user";
-        //string saveUser = url + "&action=save&objectid=" + name + ".user" + "&data=" + password;
+        //Server URL that we are going to store our JSON data to
+        private static string url = "http://introtoapps.com/datastore.php?appid=213107696";
+        private static string userBlob = "userData";
 
-        public async void Save(Uri uri)
+        public async void SendToServer(Uri uri)
         {
             var httpClient = new HttpClient();
-            var response = await httpClient.GetAsync(uri);
+            await httpClient.GetAsync(uri);
 
-            //will throw an exception if not successful
-            response.EnsureSuccessStatusCode();
+            //var response = await httpClient.GetAsync(userBlobTest);
+            //string content = await response.Content.ReadAsStringAsync();
 
-            string content = await response.Content.ReadAsStringAsync();
+            //if(String.IsNullOrWhiteSpace(content))
+            //{
+
+            //}
+            //var response = await httpClient.GetAsync(objectData);
+            //response.EnsureSuccessStatusCode();
         }
 
-        
+        public void Save(User NewUser)
+        {
+            /* This string "actualUrl" Attaches the API commands that we need to talk to the server with our JSON file
+             * objectid identifies which JSON object are we targeting 
+             * .user is the prefix we use to identify our users
+             * data= is the JSON data we are about to send to the server
+             * 
+             * We wrap our data in [] to create an array
+            */
 
-     
+            Debug.WriteLine("Creating new User");
+            string actualUrl = url + "&action=append&objectid=" + userBlob + "&data=" + NewUser.ToJsonString();
+            Uri uri = new Uri(actualUrl);
+            SendToServer(uri);
+        }
     }
 }
