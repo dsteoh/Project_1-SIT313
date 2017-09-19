@@ -44,6 +44,7 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Models\EmailValidatorBehavior.cs" />
     <Compile Include="Models\ListProperties.cs" />
     <Compile Include="Models\RegisterJson.cs" />
     <Compile Include="Models\Topics.cs" />

@@ -1,13 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
-using System.Net.Http;
-using System.Net;
+﻿using System.Net.Http;
 
 namespace Project_1.Models
 {
@@ -69,9 +60,6 @@ namespace Project_1.Models
             }
         }
         */
-
-        private static string url = "http://introtoapps.com/datastore.php?appid=213107696";
-
 
         //string actualUrl = url + "&action=load&objectid=" + this.username + ".user";
         //string saveUser = url + "&action=save&objectid=" + name + ".user" + "&data=" + password;

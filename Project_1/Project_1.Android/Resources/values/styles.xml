@@ -24,6 +24,20 @@
     <item name="android:datePickerDialogTheme">@style/AppCompatDialogStyle</item>
   </style>
 
+    <!--AlertDialog Colors-->
+      <style name="AppCompatAlertDialogStyle" parent="Theme.AppCompat.Dialog.Alert">
+      <!--buttons-->
+      <item name="colorAccent">#4b4c4c</item>
+      <!--title-->
+      <item name="android:textColor">#ffffff</item>
+      <!--text-->
+      <item name="android:textColorPrimary">#ffffff</item>
+      <!--selection list-->
+      <item name="android:textColorTertiary">#ffffff</item>
+      <!--background-->
+      <item name="android:background">#4b4c4c</item>
+    </style>
+  
   <style name="AppCompatDialogStyle" parent="Theme.AppCompat.Light.Dialog">
     <item name="colorAccent">#FF4081</item>
   </style>

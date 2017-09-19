@@ -28,16 +28,19 @@ namespace Project_1
         //Navigation button
         async void btnRegister_Clicked(object sender, EventArgs e)
         {
-            string newEmail = email.ToString();
+            string newUsername = username.ToString();
+            string passwordTest = password.ToString();
             string newPassword = WebUtility.UrlEncode(password.ToString());
 
-            
-            User testuser = User.CreateUserFromJson("{\"Username\":\"testNewUser1\", \"Password\": \"" + newPassword + "\"}");
+            Debug.WriteLine(newPassword);
+
+            User testuser = User.CreateUserFromJson("{\"Username\":\"testNewUser1\", \"Password\":\""+newPassword+"\"}");
             //await DisplayAlert("Alert", "Username" + testuser.Username + ", Password: " + testuser.Password, "OK");      
             //await DisplayAlert("Alert", "Json Serialised" + testuser.ToJsonString(), "OK");
+            Debug.WriteLine(testuser.Password);
 
             //saving
-            string actualUrl = url + "&action=save&objectid=" + testuser.Username + ".user" + "&data=" + newPassword;
+            string actualUrl = url + "&action=save&objectid=" + testuser.Username + ".user" + "&data=" + testuser.Password;
 
             Debug.WriteLine("Running Save()");
         
