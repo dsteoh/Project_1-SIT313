@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace Project_1.TopicPages.Hardware
+namespace Project_1.TopicPages
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class HardwareList : ContentPage

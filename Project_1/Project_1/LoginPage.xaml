@@ -4,9 +4,8 @@
              x:Class="Project_1.LoginPage"
              NavigationPage.HasNavigationBar="false"
              Title="Login"
-             BackgroundColor="#2f3030">         <!--any elements/ attributed prfixed with an x belongs to microsoft 
-                                                                xmlns="http://xamarin.com/schemas/2014/forms" Owned my Xamarin
-                                                                :x used to declare a prefix (this name space is owned by microsoft)-->
+             BackgroundColor="#2f3030">
+    
     <ScrollView>
         <StackLayout
         Orientation="Vertical"

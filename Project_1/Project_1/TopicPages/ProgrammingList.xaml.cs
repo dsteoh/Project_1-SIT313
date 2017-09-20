@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace Project_1.TopicPages.Programming
+namespace Project_1.TopicPages
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class ProgrammingList : ContentPage

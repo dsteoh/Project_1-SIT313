@@ -4,11 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Project_1.Models;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using Project_1.TopicPages.Programming;
-using Project_1.TopicPages.Hardware;
+using Project_1.TopicPages;
 
 namespace Project_1
 {

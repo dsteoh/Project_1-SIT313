@@ -2,6 +2,7 @@
 using System.Net.Http;
 using System.Diagnostics;
 using Newtonsoft.Json;
+using Xamarin.Forms;
 using System.Threading.Tasks;
 
 namespace Project_1.Models
@@ -83,50 +84,46 @@ namespace Project_1.Models
              * data= is the JSON data we are about to send to the server
              * 
              * We wrap our data in [] to create an array
-            */
-
-            Debug.WriteLine("Creating new User");
+            */       
             string saveUrl = url + "&action=append&objectid=" + userBlob + "&data=" + NewUser.ToJsonString();
             Uri uri = new Uri(saveUrl);
+            Debug.WriteLine("...Storing new User to our server...");
             SendToServer(uri);
+            Debug.WriteLine("New User Stored!");
+
         }
 
-        public async void CheckUserPasswordAsync(string username, string password)
+        public async Task<bool> CheckUserPasswordAsync(string username, string password)
         {
+            bool logginChecker = false;
             
             string loadUrl = url + "&action=load&objectid=" + userBlob;
             Uri uri = new Uri(loadUrl);
 
-            Debug.WriteLine("Starting http service CheckUserinServer method");
             var httpClient = new HttpClient();
+            Debug.WriteLine("...Requesting data from our server...");
             var response = await httpClient.GetAsync(uri);
 
-            Debug.WriteLine("store users in content string");
+            Debug.WriteLine("...Storing our data into a string 'content'...");
             string content = await response.Content.ReadAsStringAsync();
 
-            Debug.WriteLine("Adding users to array");
+            Debug.WriteLine("...Deserializing our data 'content' and creating an array of users from the data retrive...");
             User[] myUsers = JsonConvert.DeserializeObject<User[]>(content.ToString());
 
-            string x = content.ToString();
-            Debug.WriteLine("Check content" + content.ToString());
-
-            Debug.WriteLine("Foreach loop");
+            Debug.WriteLine("...Starting foreach loop to check if our user input matches any of the data in our server...");
             foreach (User users in myUsers)
             {
-                Debug.WriteLine("Check users" + users.Username);
-                Debug.WriteLine("check if username match");
                 if (users.Username.Equals(username))
                 {
                     Debug.WriteLine("We found our tragetted username");
                     if (users.Password.Equals(password))
                     {
-                        Debug.WriteLine("We Found Matching Passwords!!");
-                        return;
+                        Debug.WriteLine("Username and password matches!");
+                        return logginChecker = true;
                     }
-                    Debug.WriteLine("password incorrect");
                 }
-                Debug.WriteLine("username not found");
             }
+            return logginChecker;
         }
     }
 }

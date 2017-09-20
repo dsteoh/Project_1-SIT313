@@ -3807,10 +3807,7 @@ namespace Project_1.Droid
 			public const int Animation_Design_BottomSheetDialog = 2131427694;
 			
 			// aapt resource value: 0x7f0b0189
-			public const int AppCompatAlertDialogStyle = 2131427721;
-			
-			// aapt resource value: 0x7f0b018a
-			public const int AppCompatDialogStyle = 2131427722;
+			public const int AppCompatDialogStyle = 2131427721;
 			
 			// aapt resource value: 0x7f0b00b0
 			public const int Base_AlertDialog_AppCompat = 2131427504;

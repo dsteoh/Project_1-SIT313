@@ -5,7 +5,6 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -18,8 +17,8 @@ namespace Project_1
         {
             InitializeComponent();
             
-            if(Application.Current.Properties.ContainsKey("Email"))
-                username.Text = Application.Current.Properties["Email"].ToString();
+            if(Application.Current.Properties.ContainsKey("Username"))
+                username.Text = Application.Current.Properties["Username"].ToString();
 
             if (Application.Current.Properties.ContainsKey("Password"))
                 password.Text = Application.Current.Properties["Password"].ToString();
@@ -27,11 +26,7 @@ namespace Project_1
 
         async void btnLogin_Clicked(object sender, EventArgs e)
         {
-            byte[] shaKey = Encoding.UTF8.GetBytes("test");
-            byte[] newPassword = Encoding.UTF8.GetBytes(password.Text);
-            HmacSha256 newHash256 = new HmacSha256(newPassword);
-            byte[] newHashPassword = newHash256.ComputeHash(newPassword);
-            string newStringHashPassword = BitConverter.ToString(newHashPassword);
+            ServerJson checkUser = new ServerJson();
 
             Debug.WriteLine("Check for Empty fields");    
             if(String.IsNullOrWhiteSpace(username.Text) || (String.IsNullOrWhiteSpace(password.Text)))
@@ -40,12 +35,26 @@ namespace Project_1
             }
             else
             {
-                Debug.WriteLine("Starting json server connection...");
-                ServerJson checkUser = new ServerJson();
+                byte[] shaKey = Encoding.UTF8.GetBytes("test");
+                byte[] newPassword = Encoding.UTF8.GetBytes(password.Text);
+                HmacSha256 newHash256 = new HmacSha256(newPassword);
+                byte[] newHashPassword = newHash256.ComputeHash(newPassword);
+                string newStringHashPassword = BitConverter.ToString(newHashPassword);
+
 
                 Debug.WriteLine("Check true of false for matching username and password");
-                checkUser.CheckUserPasswordAsync(username.Text, newStringHashPassword);
-               
+                bool result = await checkUser.CheckUserPasswordAsync(username.Text, newStringHashPassword);
+
+                if (result == true)
+                {
+                    Application.Current.Properties["Username"] = username.Text;
+                    await Navigation.PushModalAsync(new MainPage());
+
+                }
+                if (result == false)
+                {
+                    await DisplayAlert("Oops", "Invalid Login Credentials", "Ok"); 
+                }
             }
         }
 
