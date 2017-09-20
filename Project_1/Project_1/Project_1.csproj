@@ -46,7 +46,7 @@
     </Compile>
     <Compile Include="Models\EmailValidatorBehavior.cs" />
     <Compile Include="Models\ListProperties.cs" />
-    <Compile Include="Models\RegisterJson.cs" />
+    <Compile Include="Models\ServerJson.cs" />
     <Compile Include="Models\Topics.cs" />
     <Compile Include="Models\Question.cs" />
     <Compile Include="Models\User.cs" />

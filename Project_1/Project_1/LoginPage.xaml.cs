@@ -26,6 +26,16 @@ namespace Project_1
 
         async void btnLogin_Clicked(object sender, EventArgs e)
         {
+            if(String.IsNullOrWhiteSpace(email.Text) || (String.IsNullOrWhiteSpace(email.Text)))
+            {
+                await DisplayAlert("Oops", "Please fill in the fields", "OK");
+            }
+            else
+            {
+                
+            }
+
+
             await Navigation.PushModalAsync(new MainPage());
         }
 
