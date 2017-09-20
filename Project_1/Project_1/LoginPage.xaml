@@ -22,7 +22,7 @@
                 <StackLayout
                 Orientation="Vertical"
                 Spacing="10">
-                    <Entry x:Name="email" Keyboard="Email" Placeholder="Email" Style="{StaticResource EntryColor}"/>
+                    <Entry x:Name="username" Placeholder="Username" Style="{StaticResource EntryColor}"/>
                     <Entry x:Name="password" IsPassword="True" Placeholder ="Password" Style="{StaticResource EntryColor}"/>
                     <StackLayout
                         Orientation="Horizontal">

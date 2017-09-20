@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Net.Http;
 using System.Diagnostics;
-
+using Newtonsoft.Json;
+using System.Threading.Tasks;
 
 namespace Project_1.Models
 {
@@ -72,16 +73,6 @@ namespace Project_1.Models
         {
             var httpClient = new HttpClient();
             await httpClient.GetAsync(uri);
-
-            //var response = await httpClient.GetAsync(userBlobTest);
-            //string content = await response.Content.ReadAsStringAsync();
-
-            //if(String.IsNullOrWhiteSpace(content))
-            //{
-
-            //}
-            //var response = await httpClient.GetAsync(objectData);
-            //response.EnsureSuccessStatusCode();
         }
 
         public void Save(User NewUser)
@@ -100,11 +91,42 @@ namespace Project_1.Models
             SendToServer(uri);
         }
 
-        public CheckUserPassword(string username)
+        public async void CheckUserPasswordAsync(string username, string password)
         {
-            string loadUrl = url + "&action=load&objectid=" + userBlob + "&data=" + username;
+            
+            string loadUrl = url + "&action=load&objectid=" + userBlob;
+            Uri uri = new Uri(loadUrl);
+
+            Debug.WriteLine("Starting http service CheckUserinServer method");
+            var httpClient = new HttpClient();
+            var response = await httpClient.GetAsync(uri);
+
+            Debug.WriteLine("store users in content string");
+            string content = await response.Content.ReadAsStringAsync();
+
+            Debug.WriteLine("Adding users to array");
+            User[] myUsers = JsonConvert.DeserializeObject<User[]>(content.ToString());
+
+            string x = content.ToString();
+            Debug.WriteLine("Check content" + content.ToString());
+
+            Debug.WriteLine("Foreach loop");
+            foreach (User users in myUsers)
+            {
+                Debug.WriteLine("Check users" + users.Username);
+                Debug.WriteLine("check if username match");
+                if (users.Username.Equals(username))
+                {
+                    Debug.WriteLine("We found our tragetted username");
+                    if (users.Password.Equals(password))
+                    {
+                        Debug.WriteLine("We Found Matching Passwords!!");
+                        return;
+                    }
+                    Debug.WriteLine("password incorrect");
+                }
+                Debug.WriteLine("username not found");
+            }
         }
-
-
     }
 }
