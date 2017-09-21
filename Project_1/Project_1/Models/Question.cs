@@ -8,6 +8,7 @@ namespace Project_1.Models
         private string _title;
         private string _forumQuestion;
         private string _description;
+        private string _replies;
 
         public string Title
         {
@@ -23,6 +24,11 @@ namespace Project_1.Models
         {
             get { return _description; }
             set { _description = value; }
+        }
+        public string Replies
+        {
+            get { return _replies; }
+            set { _replies = value; }
         }
 
         public Question()

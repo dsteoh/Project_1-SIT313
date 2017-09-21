@@ -15,7 +15,6 @@ namespace Project_1.TopicPages
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class ProgrammingList : ContentPage
     {
-        string Topic = "";
         private ObservableCollection<Question> _newList = new ObservableCollection<Question>();
 
         public ProgrammingList (Topics Name)
@@ -26,14 +25,12 @@ namespace Project_1.TopicPages
             }
             BindingContext = Name;
             InitializeComponent ();
-            Topic = Name.ToString();
 
 
             Debug.WriteLine("...Create List method...");
             CreateList();
 
             ProgramQList.ItemsSource = _newList;
-
         }
 
         public ObservableCollection<Question> NewList
@@ -48,7 +45,6 @@ namespace Project_1.TopicPages
                 //NotifyPropertyChanged("NewList");
             }
         }
-
 
         async void CreateList()
         {
@@ -69,9 +65,9 @@ namespace Project_1.TopicPages
         }
 
         //Button (To add a new forum thread
-        private void ToolbarItem_Activated(object sender, EventArgs e)
+        private async void ToolbarItem_Activated(object sender, EventArgs e)
         {
-            DisplayAlert("Add Option", "Add A new Thread", "ok");
+            await Navigation.PushModalAsync(new NewQuestion());
         }
 
         async void ProgramQList_ItemSelected(object sender, SelectedItemChangedEventArgs e)
@@ -80,8 +76,10 @@ namespace Project_1.TopicPages
             {
                 return;
             }
+            var TopicName = e.SelectedItem as Question;
+
             //Deselect listview item after being selected
-            await Navigation.PushAsync(new ViewQuestion(Topic));
+            await Navigation.PushAsync(new ViewQuestion(TopicName));
             ProgramQList.SelectedItem = null; 
         }
     }

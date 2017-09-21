@@ -102,6 +102,15 @@ namespace Project_1.Models
             Debug.WriteLine("New Question Stored!");
         }
 
+        public void Reply(Question NewQuestion)
+        {
+            string newQuestionUrl = url + "&action=append&objectid=" + questionData + "&data=" + NewQuestion.ToJsonString();
+            Uri uri = new Uri(newQuestionUrl);
+            Debug.WriteLine("...Storing new forum question to our server...");
+            SendToServer(uri);
+            Debug.WriteLine("New Question Stored!");
+        }
+
         public async Task<bool> CheckUserPasswordAsync(string username, string password)
         {
             bool logginChecker = false;

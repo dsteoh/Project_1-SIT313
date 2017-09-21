@@ -33,10 +33,10 @@ namespace Project_1.TopicPages
         //A button to add to the forum.
         private async Task ToolbarItem_Activated(object sender, EventArgs e)
         {
-            //User NewUser = User.CreateUserFromJson("{\"Username\":\"" + newUser + "\", \"Email\":\"" + newEmail + "\", \"Password\":\"" + newStringHashPassword + "\"}");
-            ServerJson newHardwareQuestion = new ServerJson();
+            ////User NewUser = User.CreateUserFromJson("{\"Username\":\"" + newUser + "\", \"Email\":\"" + newEmail + "\", \"Password\":\"" + newStringHashPassword + "\"}");
+            //ServerJson newHardwareQuestion = new ServerJson();
 
-            await Navigation.PushModalAsync(new NewQuestion());
+            //await Navigation.PushModalAsync(new NewQuestion());
 
         }
     }

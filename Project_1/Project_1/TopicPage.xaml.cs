@@ -21,7 +21,6 @@ namespace Project_1
             TopicList.ItemsSource = new List<Topics>
             {
                 new Topics {Name = "Programming"},
-                new Topics {Name = "Hardware"},
             };
 		}
         
@@ -41,12 +40,6 @@ namespace Project_1
             {
                 await Navigation.PushAsync(new ProgrammingList(TopicName));
             }
-
-            if (TopicName.Name == "Hardware")
-            {
-                await Navigation.PushAsync(new HardwareList(TopicName));
-            }
-            TopicList.SelectedItem = null;
         }
     }
 }

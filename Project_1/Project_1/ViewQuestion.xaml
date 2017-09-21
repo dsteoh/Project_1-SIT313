@@ -4,19 +4,16 @@
              x:Class="Project_1.TopicPages.ViewQuestion">
 
     <!--This page contains the template to format questions and replies-->
-    <ListView x:Name="ViewQuestionList" HasUnevenRows="True">
-        <ListView.ItemTemplate>
-            <DataTemplate>
-                <ViewCell>
-                    <StackLayout Orientation="Horizontal" Padding="7">
-                        <StackLayout HorizontalOptions="StartAndExpand">
-                            <Label Text="{Binding ForumQuestion}" TextColor="White"/>
-                        </StackLayout>
-                        <Button Text="Reply"/>
-                    </StackLayout>
-                </ViewCell>
-                <!--<ImageCell Text="{Binding Title}" Detail="{Binding ForumQuestion}" ImageSource="{Binding ImageUrl}"/>-->
-            </DataTemplate>
-        </ListView.ItemTemplate>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Icon="plus.png" Text="Reply" Activated="ToolbarItem_Activated" Order="Secondary"/>
+    </ContentPage.ToolbarItems>
+    <ListView x:Name="ViewQuestionList" 
+              HasUnevenRows="True" 
+              ItemsSource="{Binding NewList}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding ForumQuestion}"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
     </ListView>
 </ContentPage>

@@ -7,7 +7,8 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem Icon="plus.png" Text="New" Activated="ToolbarItem_Activated" Order="Secondary"/>
     </ContentPage.ToolbarItems>
-    <ListView x:Name="ProgramQList" ItemsSource="{Binding NewList}">
+    <ListView x:Name="ProgramQList" ItemsSource="{Binding NewList}"
+              ItemSelected="ProgramQList_ItemSelected">
         <ListView.ItemTemplate>
             <DataTemplate>
                 <TextCell Text="{Binding Title}"/>

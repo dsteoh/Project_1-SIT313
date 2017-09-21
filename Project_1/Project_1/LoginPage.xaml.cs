@@ -65,8 +65,6 @@ namespace Project_1
         private void Switch_Toggled(object sender, ToggledEventArgs e)
         {
             Application.Current.Properties["Username"] = username.Text;
-
-            // Application.Current.SavePropertiesAsync(); <--- stores data as in real time good for email typing etc
         }  
     }
 }
