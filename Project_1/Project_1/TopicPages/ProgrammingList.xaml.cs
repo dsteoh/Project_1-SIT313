@@ -1,6 +1,8 @@
 ﻿using Project_1.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,29 +14,59 @@ namespace Project_1.TopicPages
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class ProgrammingList : ContentPage
-	{
-		public ProgrammingList (Topics Name)
+    {
+        string Topic = "";
+        private ObservableCollection<Question> _newList = new ObservableCollection<Question>();
+
+        public ProgrammingList (Topics Name)
 		{
-            
             if(Name == null)
             {
                 throw new ArgumentNullException();
             }
             BindingContext = Name;
+            InitializeComponent ();
+            Topic = Name.ToString();
 
-			InitializeComponent ();
 
-            //Populates the ListView
-            ProgramQList.ItemsSource = new List<ListProperties>
+            Debug.WriteLine("...Create List method...");
+            CreateList();
+
+            ProgramQList.ItemsSource = _newList;
+
+        }
+
+        public ObservableCollection<Question> NewList
+        {
+            get
             {
-                new ListProperties {Title= "Need help with ASP.NET", Description = "Posted on the 24th"},
-                new ListProperties {Title= "What are objects?", Description = "Posted Today"},
-                new ListProperties {Title= "Where to download Xamarin?", Description = "Posted on the 30th"},
-                new ListProperties {Title= "test", Description = "test"},
-                new ListProperties {Title= "test", Description = "test"}
+                return _newList;
+            }
+            set
+            {
+                _newList = value;
+                //NotifyPropertyChanged("NewList");
+            }
+        }
 
-            };
-		}
+
+        async void CreateList()
+        {
+            ServerJson FindTopics = new ServerJson();
+            Debug.WriteLine("...Requesting data from our server...");
+            Question[] newTopics = await FindTopics.RetrieveQuestions();
+
+            Debug.WriteLine("...Foreach loop populating our list...");
+            foreach (Question x in newTopics)
+            {
+                Debug.WriteLine("...Adding items to list...");
+                _newList.Add(new Question { Title = x.Title.ToString() });
+            }
+            foreach (object x in _newList)
+            {
+                Debug.WriteLine(x.ToString());
+            }
+        }
 
         //Button (To add a new forum thread
         private void ToolbarItem_Activated(object sender, EventArgs e)
@@ -48,13 +80,10 @@ namespace Project_1.TopicPages
             {
                 return;
             }
-
             //Deselect listview item after being selected
-            await Navigation.PushAsync(new ViewQuestion());
-
+            await Navigation.PushAsync(new ViewQuestion(Topic));
             ProgramQList.SelectedItem = null; 
         }
-
-
     }
+   
 }

@@ -19,6 +19,7 @@ namespace Project_1
         //Navigation button
         async void btnRegister_Clicked(object sender, EventArgs e)
         {
+            Activity.IsRunning = true;
             if (String.IsNullOrEmpty(email.Text) && String.IsNullOrEmpty(username.Text) && String.IsNullOrEmpty(password.Text))
             {
                 await DisplayAlert("Oops", "Please fill in the fields", "OK");
@@ -57,7 +58,11 @@ namespace Project_1
                 
                 //Registration finished pop up
                 await DisplayAlert("Alert", "User Registered" , "OK");
+
+                await Navigation.PushModalAsync(new LoginPage());
+
             }
+            Activity.IsRunning = true;
         }
     }
 }

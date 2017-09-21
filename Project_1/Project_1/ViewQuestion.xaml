@@ -9,9 +9,7 @@
             <DataTemplate>
                 <ViewCell>
                     <StackLayout Orientation="Horizontal" Padding="7">
-                        <Image Source="{Binding ImageUrl}"/>
                         <StackLayout HorizontalOptions="StartAndExpand">
-                            <Label Text="{Binding Title}" TextColor="White"/>
                             <Label Text="{Binding ForumQuestion}" TextColor="White"/>
                         </StackLayout>
                         <Button Text="Reply"/>

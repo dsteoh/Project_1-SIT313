@@ -68,7 +68,8 @@ namespace Project_1.Models
 
         //Server URL that we are going to store our JSON data to
         private static string url = "http://introtoapps.com/datastore.php?appid=213107696";
-        private static string userBlob = "userData";
+        private static string userData = "userData";
+        private static string questionData = "questionData";
 
         public async void SendToServer(Uri uri)
         {
@@ -82,10 +83,9 @@ namespace Project_1.Models
              * objectid identifies which JSON object are we targeting 
              * .user is the prefix we use to identify our users
              * data= is the JSON data we are about to send to the server
-             * 
              * We wrap our data in [] to create an array
-            */       
-            string saveUrl = url + "&action=append&objectid=" + userBlob + "&data=" + NewUser.ToJsonString();
+            */
+            string saveUrl = url + "&action=append&objectid=" + userData + "&data=" + NewUser.ToJsonString();
             Uri uri = new Uri(saveUrl);
             Debug.WriteLine("...Storing new User to our server...");
             SendToServer(uri);
@@ -93,11 +93,20 @@ namespace Project_1.Models
 
         }
 
+        public void NewQuestion(Question NewQuestion)
+        {
+            string newQuestionUrl = url + "&action=append&objectid=" + questionData + "&data=" + NewQuestion.ToJsonString();
+            Uri uri = new Uri(newQuestionUrl);
+            Debug.WriteLine("...Storing new forum question to our server...");
+            SendToServer(uri);
+            Debug.WriteLine("New Question Stored!");
+        }
+
         public async Task<bool> CheckUserPasswordAsync(string username, string password)
         {
             bool logginChecker = false;
             
-            string loadUrl = url + "&action=load&objectid=" + userBlob;
+            string loadUrl = url + "&action=load&objectid=" + userData;
             Uri uri = new Uri(loadUrl);
 
             var httpClient = new HttpClient();
@@ -108,7 +117,7 @@ namespace Project_1.Models
             string content = await response.Content.ReadAsStringAsync();
 
             Debug.WriteLine("...Deserializing our data 'content' and creating an array of users from the data retrive...");
-            User[] myUsers = JsonConvert.DeserializeObject<User[]>(content.ToString());
+            User[] myUsers = JsonConvert.DeserializeObject<User[]>(content);
 
             Debug.WriteLine("...Starting foreach loop to check if our user input matches any of the data in our server...");
             foreach (User users in myUsers)
@@ -125,5 +134,51 @@ namespace Project_1.Models
             }
             return logginChecker;
         }
+
+        public async Task<string> RetrieveQuestions(string title)
+        {
+            string tempHolder = "";
+            string loadUrl = url + "&action=load&objectid=" + questionData;
+            Uri uri = new Uri(loadUrl);
+
+            var httpClient = new HttpClient();
+            Debug.WriteLine("...Requesting data from our server...");
+            var response = await httpClient.GetAsync(uri);
+
+            Debug.WriteLine("...Storing our data into a string 'content'...");
+            string content = await response.Content.ReadAsStringAsync();
+
+            Debug.WriteLine("...Deserializing our data 'content' and creating an array of users from the data retrive...");
+            Question[] myQuestions = JsonConvert.DeserializeObject<Question[]>(content.ToString());
+
+            foreach (Question x in myQuestions)
+            {
+                if (x.Title == "ncnc")
+                {
+                    tempHolder = x.ForumQuestion.ToString();
+                }
+            }
+            return tempHolder;
+        }
+
+        public async Task<Question[]> RetrieveQuestions()
+        {
+            string loadUrl = url + "&action=load&objectid=" + questionData;
+            Uri uri = new Uri(loadUrl);
+
+            var httpClient = new HttpClient();
+            Debug.WriteLine("...Requesting data from our server...");
+            var response = await httpClient.GetAsync(uri);
+
+            Debug.WriteLine("...Storing our data into a string 'content'...");
+            string content = await response.Content.ReadAsStringAsync();
+
+            Debug.WriteLine("...Deserializing our data 'content' and creating an array of users from the data retrive...");
+            Question[] myQuestions = JsonConvert.DeserializeObject<Question[]>(content.ToString());
+
+
+            return myQuestions;
+        }
+
     }
 }

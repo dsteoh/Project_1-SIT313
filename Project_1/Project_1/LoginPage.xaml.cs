@@ -19,13 +19,11 @@ namespace Project_1
             
             if(Application.Current.Properties.ContainsKey("Username"))
                 username.Text = Application.Current.Properties["Username"].ToString();
-
-            if (Application.Current.Properties.ContainsKey("Password"))
-                password.Text = Application.Current.Properties["Password"].ToString();
         }
 
         async void btnLogin_Clicked(object sender, EventArgs e)
         {
+            Activity.IsRunning = true;
             ServerJson checkUser = new ServerJson();
 
             Debug.WriteLine("Check for Empty fields");    
@@ -44,7 +42,7 @@ namespace Project_1
 
                 Debug.WriteLine("Check true of false for matching username and password");
                 bool result = await checkUser.CheckUserPasswordAsync(username.Text, newStringHashPassword);
-
+  
                 if (result == true)
                 {
                     Application.Current.Properties["Username"] = username.Text;
@@ -56,6 +54,7 @@ namespace Project_1
                     await DisplayAlert("Oops", "Invalid Login Credentials", "Ok"); 
                 }
             }
+            Activity.IsRunning = false;
         }
 
         async void btnRegister_Clicked(object sender, EventArgs e)
@@ -65,8 +64,7 @@ namespace Project_1
 
         private void Switch_Toggled(object sender, ToggledEventArgs e)
         {
-            Application.Current.Properties["Email"] = username.Text;
-            Application.Current.Properties["Password"] = password.Text;
+            Application.Current.Properties["Username"] = username.Text;
 
             // Application.Current.SavePropertiesAsync(); <--- stores data as in real time good for email typing etc
         }  

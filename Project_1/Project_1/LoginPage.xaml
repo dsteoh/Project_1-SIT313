@@ -13,9 +13,10 @@
         Spacing="30">
             <Image
                 HorizontalOptions="Center"
-                WidthRequest="300"
-                HeightRequest="300"
+                WidthRequest="200"
+                HeightRequest="200"
                 Source="https://ui-router.github.io/images/logos/react.png"/>
+            <ActivityIndicator x:Name="Activity" Color="Blue" IsRunning="False" />
             <Frame
             BackgroundColor="#4b4c4c">
                 <StackLayout

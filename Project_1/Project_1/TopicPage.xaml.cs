@@ -22,10 +22,6 @@ namespace Project_1
             {
                 new Topics {Name = "Programming"},
                 new Topics {Name = "Hardware"},
-                new Topics {Name = "Software"},
-                new Topics {Name = "Cryptocurrency"},
-                new Topics {Name = "Gaming"}
-
             };
 		}
         
@@ -50,7 +46,6 @@ namespace Project_1
             {
                 await Navigation.PushAsync(new HardwareList(TopicName));
             }
-
             TopicList.SelectedItem = null;
         }
     }

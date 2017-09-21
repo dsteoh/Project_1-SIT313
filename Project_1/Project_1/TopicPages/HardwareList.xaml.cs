@@ -28,15 +28,16 @@ namespace Project_1.TopicPages
             {
                 new ListProperties {Title= "Best CPU?", Description = "Posted on the 24th"},
                 new ListProperties {Title= "How to overclock?", Description = "Posted Today"},
-                new ListProperties {Title= "New Ryzen", Description = "Posted on the 30th"},
-                new ListProperties {Title= "test", Description = "test"},
-                new ListProperties {Title= "test", Description = "test"}
             };
         }
         //A button to add to the forum.
-        private void ToolbarItem_Activated(object sender, EventArgs e)
+        private async Task ToolbarItem_Activated(object sender, EventArgs e)
         {
-            DisplayAlert("Add Option", "Add A new Thread", "ok");
+            //User NewUser = User.CreateUserFromJson("{\"Username\":\"" + newUser + "\", \"Email\":\"" + newEmail + "\", \"Password\":\"" + newStringHashPassword + "\"}");
+            ServerJson newHardwareQuestion = new ServerJson();
+
+            await Navigation.PushModalAsync(new NewQuestion());
+
         }
     }
 }
