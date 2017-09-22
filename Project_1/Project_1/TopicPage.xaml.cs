@@ -30,6 +30,7 @@ namespace Project_1
             {
                 return;
             }
+
             //TopicName stores the selected item
             var TopicName = e.SelectedItem as Topics;
             //if statement to identify which topic the user seelected and bring them to the approiate page
@@ -37,6 +38,8 @@ namespace Project_1
             {
                 await Navigation.PushAsync(new ProgrammingList(TopicName));
             }
+
+            TopicList.SelectedItem = null;
         }
     }
 }

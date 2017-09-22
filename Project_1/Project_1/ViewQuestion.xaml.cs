@@ -70,6 +70,7 @@ namespace Project_1.TopicPages
 
                 }
             }
+
             foreach (ReplyQuestion reply in newReply)
             {
                 _newList.Add(new Question { ForumQuestion = reply.Reply.ToString() });

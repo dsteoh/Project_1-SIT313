@@ -6,7 +6,7 @@
 
     <!--This page contains all the question asked about Hardawre-->
     <ContentPage.ToolbarItems>
-        <ToolbarItem Icon="plus.png" Text="New" Activated="ToolbarItem_Activated" Order="Secondary"/>
+        <ToolbarItem Icon="plus.png" Text="New" Order="Secondary"/>
     </ContentPage.ToolbarItems>
     <ListView x:Name="HardwareQList">
         <ListView.ItemTemplate>

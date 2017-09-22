@@ -36,6 +36,8 @@ namespace Project_1.TopicPages
             ServerJson ReplyQuestionJson = new ServerJson();
             Debug.WriteLine("sending newq to severjson");
             ReplyQuestionJson.Reply(tempStore, NewReply);
+            await DisplayAlert("Alert", "New Reply Posted", "OK");
+
         }
     }
 }

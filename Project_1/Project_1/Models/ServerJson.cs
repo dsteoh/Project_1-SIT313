@@ -4,6 +4,7 @@ using System.Diagnostics;
 using Newtonsoft.Json;
 using Xamarin.Forms;
 using System.Threading.Tasks;
+using System.Net;
 
 namespace Project_1.Models
 {
@@ -96,8 +97,13 @@ namespace Project_1.Models
             string replyQuestion = "Comments below are replies";   
             ReplyQuestion NewReply = ReplyQuestion.CreateReplyFromJson("{\"Reply\":\"" + replyQuestion + "\"}");
 
-            string newQuestionUrl = url + "&action=append&objectid=" + questionData + "&data=" + NewQuestion.ToJsonString();
-            string newReplyUrl = url + "&action=save&objectid=" + NewQuestion.Title + "&data=[" + NewReply.ToJsonString() + "]";
+            string spaceRemoved = NewQuestion.Title.Replace(" ", string.Empty);
+
+            string Qjson = WebUtility.UrlEncode(NewQuestion.ToJsonString());
+            string Rjson = WebUtility.UrlEncode(NewReply.ToJsonString());
+
+            string newQuestionUrl = url + "&action=append&objectid=" + questionData + "&data=" + Qjson;
+            string newReplyUrl = url + "&action=append&objectid=" + spaceRemoved + "&data=[" + Rjson + "]";
 
             Uri uri = new Uri(newQuestionUrl);
             Uri newReplyUri = new Uri(newReplyUrl);
@@ -161,7 +167,9 @@ namespace Project_1.Models
         public async Task<ReplyQuestion[]> RetrieveReply(Question qTitle)
         {
             Question temp = qTitle;
-            string loadUrl = url + "&action=load&objectid=" + qTitle.Title;
+            string spaceRemoved = qTitle.Title.Replace(" ", string.Empty);
+
+            string loadUrl = url + "&action=load&objectid=" + spaceRemoved;
             Uri uri = new Uri(loadUrl);
 
             var httpClient = new HttpClient();

@@ -19,17 +19,21 @@ namespace Project_1
         //Navigation button
         async void btnRegister_Clicked(object sender, EventArgs e)
         {
-            Activity.IsRunning = true;
             if (String.IsNullOrEmpty(email.Text) && String.IsNullOrEmpty(username.Text) && String.IsNullOrEmpty(password.Text))
             {
                 await DisplayAlert("Oops", "Please fill in the fields", "OK");
+                Activity.IsRunning = false;
+
             }
             else if (email.TextColor == Color.Red)
             {
                 await DisplayAlert("Oops", "Invalid Email address", "OK");
+                Activity.IsRunning = false;
+
             }
             else
             {
+                Activity.IsRunning = true;
                 //Initialising........Storing text/data from the Entry fields
                 string newEmail = email.Text;
                 string newUser = username.Text;                   
@@ -49,7 +53,10 @@ namespace Project_1
                 userjson.Save(NewUser);
 
                 //Registration finished pop up
+
                 await DisplayAlert("Alert", "User Registered" , "OK");
+                await Navigation.PushModalAsync(new LoginPage());
+
             }
             Activity.IsRunning = true;
         }

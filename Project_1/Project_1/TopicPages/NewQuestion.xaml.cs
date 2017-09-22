@@ -29,8 +29,9 @@ namespace Project_1.TopicPages
              * RegisterJson object contains the method Save() which contacts the server
              */
             ServerJson QuestionJson = new ServerJson();
-            Debug.WriteLine("sending newq to severjson");
             QuestionJson.NewQuestion(NewQuestion);
+            await DisplayAlert("Alert", "New Post Created", "OK");
+
         }
     }
 }
