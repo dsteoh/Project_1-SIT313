@@ -14,7 +14,6 @@ namespace Project_1
             InitializeComponent();
 
         }
-
         /// <summary>
         /// This method handles when the user press the Register button
         /// </summary>
@@ -27,7 +26,6 @@ namespace Project_1
             {
                 await DisplayAlert("Oops", "Please fill in the fields", "OK");
                 Activity.IsRunning = false;
-
             }
             //We are using EmailValidatorBehavior to check if the email entered is correct using Regex [changes to red when wrong]
             //Display Alert if email is wrong
@@ -35,7 +33,6 @@ namespace Project_1
             {
                 await DisplayAlert("Oops", "Invalid Email address", "OK");
                 Activity.IsRunning = false;
-
             }
             else
             {

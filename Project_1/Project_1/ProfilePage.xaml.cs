@@ -17,12 +17,15 @@ namespace Project_1
 			InitializeComponent ();
 		}
 
-        private void Button_Clicked(object sender, EventArgs e)
+        private async void Button_Clicked(object sender, EventArgs e)
         {
             //Data persistence saving users Footer to app data
             if (Application.Current.Properties.ContainsKey("Footer"))
                 Application.Current.Properties["Footer"] = "";
             Application.Current.Properties["Footer"] = Footer.Text;
+
+            await DisplayAlert("Alert", "Footer", "OK");
+
         }
     }
 
