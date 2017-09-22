@@ -21,24 +21,20 @@ namespace Project_1
         /// <param name="e"></param>
         async void btnRegister_Clicked(object sender, EventArgs e)
         {
+            Activity.IsRunning = true;
             //We check if fields are entered properly
             if (String.IsNullOrEmpty(email.Text) && String.IsNullOrEmpty(username.Text) && String.IsNullOrEmpty(password.Text))
             {
                 await DisplayAlert("Oops", "Please fill in the fields", "OK");
-                Activity.IsRunning = false;
             }
             //We are using EmailValidatorBehavior to check if the email entered is correct using Regex [changes to red when wrong]
             //Display Alert if email is wrong
             else if (email.TextColor == Color.Red)
             {
                 await DisplayAlert("Oops", "Invalid Email address", "OK");
-                Activity.IsRunning = false;
             }
             else
             {
-                //Activity indicator
-                Activity.IsRunning = true;
-
                 //Initialising........Storing text/data from the Entry fields
                 string newEmail = email.Text;
                 string newUser = username.Text;         
@@ -69,7 +65,7 @@ namespace Project_1
                 await Navigation.PushModalAsync(new LoginPage());
 
             }
-            Activity.IsRunning = true;
+            Activity.IsRunning = false;
         }
     }
 }

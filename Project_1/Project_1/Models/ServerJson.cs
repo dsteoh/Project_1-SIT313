@@ -135,7 +135,10 @@ namespace Project_1.Models
         /// <param name="Reply"></param>
         public void Reply(Question qTitle, ReplyQuestion Reply)
         {
-            string newReplyUrl = url + "&action=append&objectid=" + qTitle.Title + "&data=" + Reply.ToJsonString();
+            string replyJson = WebUtility.UrlEncode(Reply.ToJsonString());
+            string spaceRemoved = qTitle.Title.Replace(" ", string.Empty);
+
+            string newReplyUrl = url + "&action=append&objectid=" + spaceRemoved + "&data=" + replyJson;
             Uri uri = new Uri(newReplyUrl);
             SendToServer(uri);
         }
@@ -188,7 +191,8 @@ namespace Project_1.Models
             var response = await httpClient.GetAsync(uri);
             string content = await response.Content.ReadAsStringAsync();
 
-            Question[] myQuestions = JsonConvert.DeserializeObject<Question[]>(content.ToString());
+            string decoded = WebUtility.UrlDecode(content);
+            Question[] myQuestions = JsonConvert.DeserializeObject<Question[]>(decoded);
             return myQuestions;
         }
         /// <summary>

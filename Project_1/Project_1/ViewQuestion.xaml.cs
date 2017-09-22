@@ -56,7 +56,6 @@ namespace Project_1.TopicPages
 
             ViewQuestionList.ItemsSource = _newList;
         }
-
         //Properties for our New List (SHOULD BE STORE UNDER MODELS FILE)
         public ObservableCollection<Question> NewList
         {
@@ -69,7 +68,6 @@ namespace Project_1.TopicPages
                 _newList = value;
             }
         }
-
         //CreateList method that retrives the data from the server and displays it on the ListView
         async void CreateList()
         {
@@ -91,7 +89,6 @@ namespace Project_1.TopicPages
 
                 }
             }
-
             //Identify which is the selected ReplyQuestion title to display the right ReplyQuestion details
             foreach (ReplyQuestion reply in newReply)
             {
@@ -102,14 +99,11 @@ namespace Project_1.TopicPages
             {
                 Debug.WriteLine(x.ToString());
             }
-            
         }
-
         private async void ToolbarItem_Activated(object sender, EventArgs e)
         {
             await Navigation.PushModalAsync(new Reply(tempStore));
         }
-
         private void ViewQuestionList_Refreshing(object sender, EventArgs e)
         {
             ViewQuestionList.ItemsSource = _newList;
