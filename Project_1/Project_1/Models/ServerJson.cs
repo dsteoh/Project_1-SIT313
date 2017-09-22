@@ -8,6 +8,9 @@ using System.Net;
 
 namespace Project_1.Models
 {
+    /// <summary>
+    /// This class handles all the JSON server data connection
+    /// </summary>
     class ServerJson
     {
         /* GetResponseAsync() Method can't be used as it does not support Windows phone 8 
@@ -72,18 +75,27 @@ namespace Project_1.Models
         private static string userData = "userData";
         private static string questionData = "questionData";
 
+        /// <summary>
+        /// Takes the uri and send it to our json server
+        /// </summary>
+        /// <param name="uri"></param>
         public async void SendToServer(Uri uri)
         {
+            //Connecting to the server
             var httpClient = new HttpClient();
+            //Pusing our data to the server
             await httpClient.GetAsync(uri);
         }   
+        /// <summary>
+        /// Saves users to userData array
+        /// </summary>
+        /// <param name="NewUser"></param>
         public void Save(User NewUser)
         {
             /* This string "actualUrl" Attaches the API commands that we need to talk to the server with our JSON file
              * objectid identifies which JSON object are we targeting 
              * .user is the prefix we use to identify our users
              * data= is the JSON data we are about to send to the server
-             * We wrap our data in [] to create an array
             */
             string saveUrl = url + "&action=append&objectid=" + userData + "&data=" + NewUser.ToJsonString();
             Uri uri = new Uri(saveUrl);
@@ -92,6 +104,10 @@ namespace Project_1.Models
             Debug.WriteLine("New User Stored!");
 
         }
+        /// <summary>
+        /// Creates a new Questions inside the JSON questionData array + create a new array for replies
+        /// </summary>
+        /// <param name="NewQuestion"></param>
         public void NewQuestion(Question NewQuestion)
         {
             string replyQuestion = "Comments below are replies";   
@@ -111,21 +127,26 @@ namespace Project_1.Models
             SendToServer(uri);
             SendToServer(newReplyUri);
         }
+        /// <summary>
+        /// This method takes the Question title that is targetted into param qTitle this allows us to create a new array called Question.Title (eg HowToCode?) 
+        /// Which will allow us to easily identify the array to target and append new replies to it
+        /// </summary>
+        /// <param name="qTitle"></param>
+        /// <param name="Reply"></param>
         public void Reply(Question qTitle, ReplyQuestion Reply)
         {
             string newReplyUrl = url + "&action=append&objectid=" + qTitle.Title + "&data=" + Reply.ToJsonString();
             Uri uri = new Uri(newReplyUrl);
             SendToServer(uri);
         }
+        /// <summary>
+        /// Takes username and password and check if they match
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
         public async Task<bool> CheckUserPasswordAsync(string username, string password)
         {
-            //string Title = "Title";
-            //string ForumQuestion = "Question";
-            //string Desc = "Description";
-            ////Creates a NewQuestion object and uses the data from the user and creates a JSON formatted data structure
-            //Question initalizedq = Question.CreateQuestionFromJson("{\"Title\":\"" + Title + "\", \"ForumQuestion\":\"" + ForumQuestion + "\", \"Description\":\"" + Desc + "\"}");
-            //NewQuestion(initalizedq);
-
             bool logginChecker = false;
             
             string loadUrl = url + "&action=load&objectid=" + userData;
@@ -136,13 +157,15 @@ namespace Project_1.Models
 
             string content = await response.Content.ReadAsStringAsync();
 
+            //Takes all the users from the json array and stores it in an array type User 
             User[] myUsers = JsonConvert.DeserializeObject<User[]>(content);
-
+            //Check if user exsits
             foreach (User users in myUsers)
             {
                 if (users.Username.Equals(username))
                 {
                     Debug.WriteLine("We found our tragetted username");
+                    //Checks if username entered matches the password
                     if (users.Password.Equals(password))
                     {
                         Debug.WriteLine("Username and password matches!");
@@ -152,6 +175,10 @@ namespace Project_1.Models
             }
             return logginChecker;
         }
+        /// <summary>
+        /// Returns all the questions to an array of Questions[]
+        /// </summary>
+        /// <returns></returns>
         public async Task<Question[]> RetrieveQuestions()
         {
             string loadUrl = url + "&action=load&objectid=" + questionData;
@@ -164,6 +191,11 @@ namespace Project_1.Models
             Question[] myQuestions = JsonConvert.DeserializeObject<Question[]>(content.ToString());
             return myQuestions;
         }
+        /// <summary>
+        /// Method returns all replies from the Question targetted 
+        /// </summary>
+        /// <param name="qTitle"></param>
+        /// <returns></returns>
         public async Task<ReplyQuestion[]> RetrieveReply(Question qTitle)
         {
             Question temp = qTitle;

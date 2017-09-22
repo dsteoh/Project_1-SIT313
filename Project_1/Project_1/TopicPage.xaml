@@ -5,7 +5,8 @@
              Title="Topics">
 
     <ListView x:Name="TopicList"
-              ItemSelected="TopicList_ItemSelected">
+              ItemSelected="TopicList_ItemSelected"
+              SeparatorColor="White">
         <ListView.ItemTemplate>
             <DataTemplate>
                 <TextCell Text="{Binding Name}" TextColor="White"/>

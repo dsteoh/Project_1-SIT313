@@ -23,6 +23,7 @@ namespace Project_1
                 new Topics {Name = "Programming"},
             };
 		}
+
         //This method handles the Items in the ListView when selected
         async void TopicList_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {

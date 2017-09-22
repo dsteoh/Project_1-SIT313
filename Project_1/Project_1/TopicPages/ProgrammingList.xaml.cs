@@ -27,6 +27,10 @@ namespace Project_1.TopicPages
 
             ProgramQList.ItemsSource = _newList;
         }
+        public ProgrammingList()
+        {
+
+        }
 
         public ObservableCollection<Question> NewList
         {
@@ -75,6 +79,8 @@ namespace Project_1.TopicPages
 
             //Deselect listview item after being selected
             await Navigation.PushAsync(new ViewQuestion(TopicName));
+
+            ProgramQList.SelectedItem = null; 
         }
     }
    

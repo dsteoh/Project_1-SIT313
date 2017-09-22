@@ -8,11 +8,12 @@
         <ToolbarItem Icon="plus.png" Text="Reply" Activated="ToolbarItem_Activated" Order="Secondary"/>
     </ContentPage.ToolbarItems>
     <ListView x:Name="ViewQuestionList" 
-              HasUnevenRows="True" 
+              HasUnevenRows="True"
+              SeparatorColor="White"
               ItemsSource="{Binding NewList}">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <TextCell Text="{Binding ForumQuestion}"/>
+                    <TextCell Text="{Binding ForumQuestion}" />
                 </DataTemplate>
             </ListView.ItemTemplate>
     </ListView>
