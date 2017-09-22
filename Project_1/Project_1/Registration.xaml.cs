@@ -50,8 +50,6 @@ namespace Project_1
 
                 //Registration finished pop up
                 await DisplayAlert("Alert", "User Registered" , "OK");
-
-                await Navigation.PushModalAsync(new LoginPage());
             }
             Activity.IsRunning = true;
         }

@@ -27,7 +27,7 @@
                             <behaviors:EmailValidatorBehavior/>
                         </Entry.Behaviors>
                     </Entry>
-                    <Entry x:Name="password" Placeholder ="Password" Style="{StaticResource EntryColor}"/>
+                    <Entry x:Name="password" IsPassword="True" Placeholder ="Password" Style="{StaticResource EntryColor}"/>
                     <Button Text="Register" Clicked="btnRegister_Clicked"/>
                 </StackLayout>
             </Frame>

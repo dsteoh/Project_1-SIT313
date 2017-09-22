@@ -14,8 +14,8 @@
                     <StackLayout 
                         Orientation="Vertical"
                         Spacing="10">
-                    <Entry  x:Name="title" Placeholder="Title" PlaceholderColor="White"></Entry>
-                    <Entry  x:Name="description" Placeholder="Description" PlaceholderColor="White"></Entry>
+                    <Entry  x:Name="title" Placeholder="Title" PlaceholderColor="White" TextColor="White"/>
+                    <Entry  x:Name="description" Placeholder="Description" PlaceholderColor="White" TextColor="White"></Entry>
                     <Label Text="Post" TextColor="White"/>
                     <Editor x:Name="questionEdit" HorizontalOptions="FillAndExpand" HeightRequest="300" TextColor="White"/>
                     <Button Text="Submit" Clicked="Button_Clicked"/>

@@ -113,6 +113,13 @@ namespace Project_1.Models
         }
         public async Task<bool> CheckUserPasswordAsync(string username, string password)
         {
+            //string Title = "Title";
+            //string ForumQuestion = "Question";
+            //string Desc = "Description";
+            ////Creates a NewQuestion object and uses the data from the user and creates a JSON formatted data structure
+            //Question initalizedq = Question.CreateQuestionFromJson("{\"Title\":\"" + Title + "\", \"ForumQuestion\":\"" + ForumQuestion + "\", \"Description\":\"" + Desc + "\"}");
+            //NewQuestion(initalizedq);
+
             bool logginChecker = false;
             
             string loadUrl = url + "&action=load&objectid=" + userData;

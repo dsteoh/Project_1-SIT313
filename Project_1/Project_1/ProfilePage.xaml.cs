@@ -16,6 +16,11 @@ namespace Project_1
 		{
 			InitializeComponent ();
 		}
-	}
+
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+            Application.Current.Properties["Footer"] = Footer.Text;
+        }
+    }
 
 }

@@ -4,6 +4,25 @@
              x:Class="Project_1.ProfilePage"
              Title="Profile">
     <!-- Our aim here is to create a banner and a profile picture holder to represent where the items are going to go these will be replaced by actual picture in project 2-->
-    
-    
+    <ScrollView>
+        <StackLayout
+        Orientation="Vertical"
+        Padding="20"
+        Spacing="30">
+            <Image
+                HorizontalOptions="Center"
+                WidthRequest="200"
+                HeightRequest="200"
+                Source="https://ui-router.github.io/images/logos/react.png"/>
+            <Frame
+            BackgroundColor="#4b4c4c">
+                <StackLayout
+                Orientation="Vertical"
+                Spacing="10">
+                    <Entry x:Name="Footer" Placeholder ="Footer" Style="{StaticResource EntryColor}"/>
+                    <Button Text="Save" Clicked="Button_Clicked"/>
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+    </ScrollView>
 </ContentPage>
