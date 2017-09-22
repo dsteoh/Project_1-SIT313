@@ -10,6 +10,5 @@
             <local:TopicPage/>
         </x:Arguments>
     </NavigationPage>
-        <local:SearchPage/>
         <local:ProfilePage/>
 </TabbedPage>

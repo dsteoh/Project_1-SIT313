@@ -55,6 +55,8 @@ namespace Project_1
                 }
             }
             Activity.IsRunning = false;
+
+
         }
 
         async void btnRegister_Clicked(object sender, EventArgs e)

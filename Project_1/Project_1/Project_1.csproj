@@ -47,6 +47,7 @@
     <Compile Include="Models\EmailValidatorBehavior.cs" />
     <Compile Include="Models\HmacSha256.cs" />
     <Compile Include="Models\ListProperties.cs" />
+    <Compile Include="Models\ReplyQuestion.cs" />
     <Compile Include="Models\ServerJson.cs" />
     <Compile Include="Models\Topics.cs" />
     <Compile Include="Models\Question.cs" />
@@ -72,6 +73,9 @@
     </Compile>
     <Compile Include="TopicPages\ProgrammingList.xaml.cs">
       <DependentUpon>ProgrammingList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TopicPages\Reply.xaml.cs">
+      <DependentUpon>Reply.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewQuestion.xaml.cs">
       <DependentUpon>ViewQuestion.xaml</DependentUpon>
@@ -164,6 +168,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="TopicPages\NewQuestion.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="TopicPages\Reply.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

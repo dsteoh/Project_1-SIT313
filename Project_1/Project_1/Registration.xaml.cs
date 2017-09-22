@@ -32,19 +32,12 @@ namespace Project_1
             {
                 //Initialising........Storing text/data from the Entry fields
                 string newEmail = email.Text;
-                string newUser = username.Text;         
+                string newUser = username.Text;                   
                 byte[] shaKey = Encoding.UTF8.GetBytes("test");
-
                 byte[] newPassword = Encoding.UTF8.GetBytes(password.Text);
-                
                 HmacSha256 newHash256 = new HmacSha256(newPassword);
-
                 byte[] newHashPassword = newHash256.ComputeHash(newPassword);
-
                 string newStringHashPassword = BitConverter.ToString(newHashPassword);
-
-
-                // WebUtility.UrlEncode
 
                 //Creates a new user object and uses the data from the user and creates a JSON formatted data structure
                 User NewUser = User.CreateUserFromJson("{\"Username\":\"" + newUser + "\", \"Email\":\"" + newEmail + "\", \"Password\":\"" + newStringHashPassword + "\"}");
@@ -55,12 +48,10 @@ namespace Project_1
                 ServerJson userjson = new ServerJson();
                 userjson.Save(NewUser);
 
-                
                 //Registration finished pop up
                 await DisplayAlert("Alert", "User Registered" , "OK");
 
                 await Navigation.PushModalAsync(new LoginPage());
-
             }
             Activity.IsRunning = true;
         }

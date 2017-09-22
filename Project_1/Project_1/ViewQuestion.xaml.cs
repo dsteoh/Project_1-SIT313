@@ -18,9 +18,8 @@ namespace Project_1.TopicPages
 	public partial class ViewQuestion : ContentPage
     {
         private ObservableCollection<Question> _newList = new ObservableCollection<Question>();
-
+        Question tempStore = new Question();
         string selectedTopic;
-
         public ViewQuestion (Question selectedTitle)
 		{
             if (selectedTitle == null)
@@ -31,6 +30,8 @@ namespace Project_1.TopicPages
             InitializeComponent ();
             CreateList();
             selectedTopic = selectedTitle.Title;
+            tempStore = selectedTitle;
+
             Debug.WriteLine("THIS IS THE SELECTED TOPIC AFTER" + selectedTopic);
 
             ViewQuestionList.ItemsSource = _newList;
@@ -53,30 +54,37 @@ namespace Project_1.TopicPages
             ServerJson FindTopics = new ServerJson();
             Debug.WriteLine("...Requesting data from our server ViewQuestions...");
             Question[] newTopics = await FindTopics.RetrieveQuestions();
+            ReplyQuestion[] newReply = await FindTopics.RetrieveReply(tempStore);
 
             Debug.WriteLine("...Foreach loop populating our list ViewQuestions...");
 
-            Debug.WriteLine("THIS IS THE SELECTED TOPIC BEFORE FOREACH"+selectedTopic);
+            Debug.WriteLine("THIS IS THE SELECTED TOPIC BEFORE FOREACH" + selectedTopic);
 
-            foreach (Question x in newTopics)
+            foreach (Question question in newTopics)
             {
                 Debug.WriteLine("THIS IS THE SELECTED TOPIC INSIDE FOREACH" + selectedTopic);
-                if (x.Title.Equals(selectedTopic))
+                if (question.Title.Equals(selectedTopic))
                 {
                     Debug.WriteLine("...Adding items to list ViewQuestions...");
-                    _newList.Add(new Question { ForumQuestion = x.ForumQuestion.ToString() });
+                    _newList.Add(new Question { ForumQuestion = question.ForumQuestion.ToString() });
+
                 }
+            }
+            foreach (ReplyQuestion reply in newReply)
+            {
+                _newList.Add(new Question { ForumQuestion = reply.Reply.ToString() });
             }
 
             foreach (object x in _newList)
             {
                 Debug.WriteLine(x.ToString());
             }
+            
         }
 
-        private void ToolbarItem_Activated(object sender, EventArgs e)
+        private async void ToolbarItem_Activated(object sender, EventArgs e)
         {
-
+            await Navigation.PushModalAsync(new Reply(tempStore));
         }
     }
 }

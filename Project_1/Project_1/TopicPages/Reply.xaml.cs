@@ -5,37 +5,39 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace Project_1.TopicPages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class NewQuestion : ContentPage
+    public partial class Reply : ContentPage
     {
-        public NewQuestion()
+        string selectedTopic;
+        Question tempStore = new Question();
+
+        public Reply(Question selectedTitle)
         {
             InitializeComponent();
+            selectedTopic = selectedTitle.Title;
+            tempStore = selectedTitle;
         }
 
-        async void Button_Clicked(object sender, EventArgs e)
+        private async void Button_Clicked(object sender, EventArgs e)
         {
-            string Title = title.Text;
-            string ForumQuestion = questionEdit.Text;
-            string Desc = description.Text;
-            Debug.WriteLine("Starting new object newq");
+            string replyQuestion = replyEdit.Text;
             //Creates a NewQuestion object and uses the data from the user and creates a JSON formatted data structure
-            Question NewQuestion = Question.CreateQuestionFromJson("{\"Title\":\"" + Title + "\", \"ForumQuestion\":\"" + ForumQuestion + "\", \"Description\":\"" + Desc + "\"}");
+            ReplyQuestion NewReply = ReplyQuestion.CreateReplyFromJson("{\"Reply\":\"" + replyQuestion + "\"}");
 
             /* Passes QuestionJson object with our JSON format to the RegisterJson object 
              * RegisterJson object contains the method Save() which contacts the server
              */
-            ServerJson QuestionJson = new ServerJson();
+            ServerJson ReplyQuestionJson = new ServerJson();
             Debug.WriteLine("sending newq to severjson");
-            QuestionJson.NewQuestion(NewQuestion);
+            ReplyQuestionJson.Reply(tempStore, NewReply);
 
-            await DisplayAlert("Alert", NewQuestion.ToJsonString(), "OK");
-
+            await DisplayAlert("Alert", NewReply.ToJsonString(), "OK");
         }
     }
 }
